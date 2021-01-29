@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
         currentMaxHealth = health;
         currentHealth = currentMaxHealth;
         currentLightRadius = baseLightRadius;
-        souls = new GameObject[maxSoulsFollowing];
+        souls = new List<GameObject>();
     }
 
     //Light
@@ -77,12 +77,12 @@ public class PlayerStats : MonoBehaviour
 
     public void addSoul(GameObject soul)
     {
-        souls[souls.Length] = soul;
+        souls.Add(soul);
     }
 
     public void removeSoul()
     {
-        souls[souls.Length] = null;
+        souls.RemoveAt(souls.Count -1);
     }
 
     public void removeSouls(int amountOfSouls)
