@@ -5,7 +5,7 @@ public class DoorOpen : MonoBehaviour
     [SerializeField] GameObject door;
     bool doorOpened;
     [SerializeField] float doorHeight;
-    PlayerStats playerStats;
+    [SerializeField]PlayerStats playerStats;
    [SerializeField] int triggerRequirement;
 
     private void Start()
@@ -15,18 +15,23 @@ public class DoorOpen : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!doorOpened) {
-            if (playerStats.soulsFollowing() >= triggerRequirement) {
-                door.transform.position += new Vector3(0, -doorHeight, 0);
-                doorOpened = true; }
-                }
-        else 
-        {
-            if (playerStats.soulsFollowing() >= triggerRequirement)
+        if (other.gameObject.tag.Equals("Player")){
+
+            if (!doorOpened)
             {
-                door.transform.position += new Vector3(0, doorHeight, 0);
-                doorOpened = false;
+                if (playerStats.soulsFollowing() >= triggerRequirement) {
+                    door.transform.position += new Vector3(0, -doorHeight, 0);
+                    doorOpened = true; }
             }
+            else
+            {
+                if (playerStats.soulsFollowing() >= triggerRequirement)
+                {
+                    door.transform.position += new Vector3(0, doorHeight, 0);
+                    doorOpened = false;
+                }
+            } 
         }
+        
     }
 }
