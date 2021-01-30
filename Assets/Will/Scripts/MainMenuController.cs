@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
 
     public Sound music;
     public Sound SFX;
+    public Sound btn;
 
     private AudioSource musicVol;
 
@@ -40,6 +41,7 @@ public class MainMenuController : MonoBehaviour
     public void fadeOutMusicBtn()
     {
         StartCoroutine(fadeOutMusic());
+        btn.Play();
     }
 
     IEnumerator fadeOutMusic()
@@ -49,6 +51,12 @@ public class MainMenuController : MonoBehaviour
             musicVol.volume -= Time.deltaTime/1.5f;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        SceneManager.LoadScene(1);
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
     }
 
     IEnumerator exitMenuAnimation()
