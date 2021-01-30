@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EnemyCore
+  m_Shader: {fileID: -6465566751694194690, guid: ff7f0db998806f04ebe70b95be3a4b27,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Boolean_98C2B813: 0
+    - Vector1_18002CCA: 0.9
+    - Vector1_9E04C9C6: 0.2
+    - Vector1_D184FC93: 1
+    - Vector1_D534A07F: 5
+    - Vector1_E54DD5A8: 1
+    m_Colors:
+    - Color_93F55094: {r: 2, g: 0, b: 0, a: 1}
+    - Color_AB5299F4: {r: 5.3403134, g: 0.1763312, b: 0.1763312, a: 1}
