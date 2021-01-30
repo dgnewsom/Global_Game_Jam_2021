@@ -66,8 +66,8 @@ public class Bonfire : MonoBehaviour
 
     public void OnDeposit(InputAction.CallbackContext context) 
     {
-        if (playerStats.soulsFollowing() > 0 && atBonfire && context.performed) {
-            bonfireSouls.Push(playerStats.removeSoul());
+        if (playerStats.SoulsFollowing() > 0 && atBonfire && context.performed) {
+            bonfireSouls.Push(playerStats.RemoveSoul());
             currentSouls++;
             checkSouls();
         }

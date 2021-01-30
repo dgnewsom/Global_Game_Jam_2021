@@ -23,7 +23,7 @@ public class DoorOpen : MonoBehaviour
 
             if (!doorOpened)
             {
-                if (playerStats.soulsFollowing() >= triggerRequirement) {
+                if (playerStats.SoulsFollowing() >= triggerRequirement) {
                     door.transform.position += new Vector3(0, -doorHeight, 0);
                     doorOpened = true;
                    
@@ -31,7 +31,7 @@ public class DoorOpen : MonoBehaviour
             }
             else
             {
-                if (playerStats.soulsFollowing() >= triggerRequirement)
+                if (playerStats.SoulsFollowing() >= triggerRequirement)
                 {
                     door.transform.position += new Vector3(0, doorHeight, 0);
                     doorOpened = false;
