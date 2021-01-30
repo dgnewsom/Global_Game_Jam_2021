@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,19 +12,34 @@ public class EnemyAgent : MonoBehaviour
     private Transform waypointsToFollow;
     [SerializeField]
     private float chargeDelay = 2f;
-    private Transform[] waypoints;
+    [SerializeField]
+    private float attackSpeed = 20f;
+    [SerializeField]
+    private float attackDistance = 10f;
+    [SerializeField]
+    GameObject prefabForRespawn;
+    private Vector3 initialPosition;
     private NavMeshAgent enemyAgent;
-    private Transform target;
+    private Transform[] waypoints;
+    private Vector3 target;
     private int currentWaypoint;
     private bool isCharging = false;
     private GameObject player;
     private float currentCharge = 0f;
     bool isAttacking = false;
+    private Vector3 attackTarget;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        ResetEnemy();
+    }
+
+    private void ResetEnemy()
+    {
+        initialPosition = GetComponentInParent<Transform>().position;
+        print(initialPosition);
         enemyAgent = GetComponent<NavMeshAgent>();
         SetWaypoints();
         enemyAgent.speed = speed;
@@ -33,11 +49,22 @@ public class EnemyAgent : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isCharging)
+        if (isAttacking)
+        {
+            if(Vector3.Distance(attackTarget, transform.position) <= 2f)
+            {
+                Death();
+            }
+        }
+        else if (!isCharging)
         {
             //if next point reached
-            enemyAgent.speed = speed;
-            if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+            if (!isAttacking)
+            {
+                enemyAgent.speed = speed;
+            }
+            
+            if (Vector3.Distance(transform.position, target) <= 0.2f)
             {
                 GetNextWaypoint();
             }
@@ -51,10 +78,19 @@ public class EnemyAgent : MonoBehaviour
             {
                 AttackPlayer();
             }
-            print("Charging - " + currentCharge / chargeDelay);
+            
             // todo set shader
         }
 
+    }
+
+    public void Death()
+    {
+        GameObject reSpawn = GameObject.Instantiate(prefabForRespawn,initialPosition,Quaternion.identity,this.transform.parent);
+        reSpawn.GetComponent<EnemyAgent>().ResetEnemy();
+        isAttacking = false;
+        GameObject.Destroy(this.gameObject);
+        print(this.ToString() + " - Dead");
     }
 
     private void AttackPlayer()
@@ -63,7 +99,14 @@ public class EnemyAgent : MonoBehaviour
         isAttacking = true;
         print("Attacking");
         currentCharge = 0f;
-        // todo charge code
+        enemyAgent.velocity = Vector3.zero;
+        enemyAgent.speed = attackSpeed;
+        Vector3 moveDir = (player.transform.position - transform.position).normalized * attackDistance;
+        Debug.DrawRay(transform.position, moveDir ,Color.red,20f);
+        attackTarget = transform.position + moveDir;
+        target = attackTarget;
+        enemyAgent.SetDestination(target);
+        
     }
 
     public void SetWaypoints()
@@ -75,14 +118,14 @@ public class EnemyAgent : MonoBehaviour
             {
                 waypoints[i] = waypointsToFollow.GetChild(i);
             }
-            target = waypoints[0];
+            target = waypoints[0].position;
         }
         catch (System.Exception e)
         {
             Debug.LogError(e);
         }
         if (target != null)
-            enemyAgent.destination = target.position;
+            enemyAgent.destination = target;
     }
 
     internal void SetCharging()
@@ -105,7 +148,7 @@ public class EnemyAgent : MonoBehaviour
         {
             currentWaypoint++;
         }
-        target = waypoints[currentWaypoint];
-        enemyAgent.destination = target.position;
+        target = waypoints[currentWaypoint].position;
+        enemyAgent.destination = target;
     }
 }
