@@ -595,12 +595,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -24.124, z: 0}
---- !u!23 &896860302 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3043074193228477334, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92,
-    type: 3}
-  m_PrefabInstance: {fileID: 691283575349211922}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328566668
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,18 +689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1467276127 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4144913623943337062, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92,
-    type: 3}
-  m_PrefabInstance: {fileID: 691283575349211922}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1654589348 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 728132814895775977, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92,
-    type: 3}
-  m_PrefabInstance: {fileID: 691283575349211922}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903585999
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,39 +856,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8641091278106812329, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92, type: 3}
-    - {fileID: 6622246592498685758, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92, type: 3}
-    - {fileID: 3062621080056782695, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92, type: 3}
---- !u!1 &691283575349211923 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 691283575188431096, guid: 6d2367bd7dc88f04bbe2c5b67c9b6f92,
-    type: 3}
-  m_PrefabInstance: {fileID: 691283575349211922}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &691283575349211924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691283575349211923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9018c56e45c0384baaa1163a6ab7c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenders:
-  - {fileID: 896860302}
-  - {fileID: 1467276127}
-  - {fileID: 1654589348}
-  isFound: 1
-  distance: 0
-  hardLock: 0
-  detectionRange: 0
-  deadZone: 0
-  targetTransform: {fileID: 0}
 --- !u!1001 &730031703976192999
 PrefabInstance:
   m_ObjectHideFlags: 0
