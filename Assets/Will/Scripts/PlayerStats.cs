@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     private Stack<GameObject> souls;        // current following souls
     private float currentMaxHealth;
     private float currentHealth;
-    private float currentLightRadius;
+    [SerializeField] private float currentLightRadius;
 
     private void Awake()
     {

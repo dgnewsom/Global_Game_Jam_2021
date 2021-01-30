@@ -124,6 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6359905725118943085}
+  - component: {fileID: 374623589692771078}
   - component: {fileID: 6359905725118943087}
   - component: {fileID: 6359905725118943086}
   - component: {fileID: 6359905725118943082}
@@ -154,6 +155,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374623589692771078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359905725118942995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0150a7c8b9381a14291f87b48d249b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 4056107060534581625}
+  playerLightHandler: {fileID: 6359905725866734687}
 --- !u!114 &6359905725118943087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +348,7 @@ MonoBehaviour:
   health: 0
   baseLightRadius: 1
   maxSoulsFollowing: 0
+  currentLightRadius: 0
 --- !u!1001 &564674254196429415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,3 +508,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6359905726110052494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6359905725866734687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1921074385, guid: 8cd778bfe4620bd4bb64010abfa33eb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6359905726110052494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81a066f30b7ebc4dba5c72bc28ce921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
