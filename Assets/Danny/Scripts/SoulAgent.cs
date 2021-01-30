@@ -18,6 +18,8 @@ public class SoulAgent : MonoBehaviour
     private Transform target;
     private int currentWaypoint;
     private bool isFound = false;
+    private bool foundDelayFlag = false;
+    private float foundDelay = 0.2f;
     private GameObject player;
     private float followDistance;
     private Vector3 initialPosition;
@@ -47,6 +49,7 @@ public class SoulAgent : MonoBehaviour
         soulAgent.speed = speed;
         isFound = false;
         handler.SetHardlock(false);
+        StartCoroutine(DelayFound());
     }
 
     // Update is called once per frame
@@ -102,6 +105,10 @@ public class SoulAgent : MonoBehaviour
 
     public void SetFound(bool setIsFound)
     {
+        if (foundDelayFlag && setIsFound)
+        {
+            return;
+        }
         if (!isFound && setIsFound)
         {
             PlaySound_PickUp();
@@ -137,5 +144,12 @@ public class SoulAgent : MonoBehaviour
     {
         print(this + " play found sound");
         pickUpSounds[UnityEngine.Random.Range(0, pickUpSounds.Count)].Play();
+    }
+
+    IEnumerator DelayFound()
+    {
+        foundDelayFlag = true;
+        yield return new WaitForSeconds(foundDelay);
+        foundDelayFlag = false;
     }
 }
