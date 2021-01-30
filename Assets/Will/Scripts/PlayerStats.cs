@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -101,5 +102,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    
+    public float GetLightRadius()
+    {
+        return currentLightRadius;
+    }
 }
