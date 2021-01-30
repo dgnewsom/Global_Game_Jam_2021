@@ -21,7 +21,7 @@ public class SoulModelHandlerScript : MonoBehaviour
         {
             distance = Mathf.Abs((transform.position - targetTransform.position).magnitude);
         }
-        UpdateMaterials();
+        //UpdateMaterials();
     }
 
     public void UpdateMaterials()
