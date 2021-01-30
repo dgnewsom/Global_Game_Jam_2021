@@ -172,10 +172,14 @@ public class EnemyAgent : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             PlayerStats playerStats = player.GetComponent<PlayerStats>();
-            if (playerStats.soulsFollowing() > 0)
+            if (playerStats.SoulsFollowing() > 0)
             {
-                GameObject removedSoul = playerStats.removeSoul();
+                GameObject removedSoul = playerStats.RemoveSoul();
                 removedSoul.GetComponent<SoulAgent>().SetFound(false);
+            }
+            else
+            {
+                playerStats.Die();
             }
         }
     }

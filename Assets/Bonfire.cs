@@ -63,8 +63,8 @@ public class Bonfire : MonoBehaviour
 
     public void OnDeposit(InputAction.CallbackContext context) 
     {
-        if (playerStats.soulsFollowing() > 0 && atBonfire && context.performed) {
-            bonfireSouls.Push(playerStats.removeSoul());
+        if (playerStats.SoulsFollowing() > 0 && atBonfire && context.performed) {
+            bonfireSouls.Push(playerStats.RemoveSoul());
             currentSouls++;
             checkSouls();
         }
@@ -73,7 +73,7 @@ public class Bonfire : MonoBehaviour
     public void OnWithdraw(InputAction.CallbackContext context) {
         if (currentSouls > 0 && atBonfire && context.performed)
         {
-            playerStats.addSoul(bonfireSouls.Pop());
+            playerStats.AddSoul(bonfireSouls.Pop());
             currentSouls--;
             checkSouls();
         }

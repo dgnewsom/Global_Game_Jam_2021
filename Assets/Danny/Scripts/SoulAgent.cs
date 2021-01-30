@@ -36,6 +36,11 @@ public class SoulAgent : MonoBehaviour
         ResetSoul();
     }
 
+    internal bool IsFound()
+    {
+        return isFound;
+    }
+
     private void ResetSoul()
     {
         transform.position = initialPosition;

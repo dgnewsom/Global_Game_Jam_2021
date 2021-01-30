@@ -5,100 +5,117 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float health;                // starting health
-    public float baseLightRadius;
-    public int maxSoulsFollowing;
+    [Header("Camera zoom")]
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float cameraRange;
+    [SerializeField] private float cameraTransitionSpeed;
+    private float initialCameraSize;
+    private float currentCameraSize;
+    private float targetCameraSize;
+    private float cameraZoomIncrement;
+
+    [Space]
+    //public float health;                // starting health
+    [SerializeField] private int maxSoulsFollowing;
+    
+    [Space]
+    [Header("Light Radius")]
+    [SerializeField] private float baseLightRadius;
+    [SerializeField] private float maxLightRadius;
+    [SerializeField] private float lightTransitionSpeed;
+    private float targetLightRadius;
+    private float currentLightRadius;
+    private float lightRadiusIncrement;
 
     private Stack<GameObject> souls;        // current following souls
-    private float currentMaxHealth;
-    private float currentHealth;
-    [SerializeField] private float currentLightRadius;
+    //private float currentMaxHealth;
+    //private float currentHealth;
+    
+    private bool isDead;
 
     private void Awake()
     {
-        currentMaxHealth = health;
-        currentHealth = currentMaxHealth;
+        print(playerCamera.orthographicSize);
+        //currentMaxHealth = health;
+        //currentHealth = currentMaxHealth;
         currentLightRadius = baseLightRadius;
+        targetLightRadius = baseLightRadius;
         souls = new Stack<GameObject>();
+        initialCameraSize = playerCamera.orthographicSize;
+        currentCameraSize = playerCamera.orthographicSize;
+        targetCameraSize = playerCamera.orthographicSize;
+        cameraZoomIncrement = cameraRange / maxSoulsFollowing;
+        lightRadiusIncrement = maxLightRadius / maxSoulsFollowing;
+        isDead = false;
+
     }
 
+    private void FixedUpdate()
+    {
+        if (isDead)
+        {
+            targetLightRadius = 200f;
+        }
+        currentLightRadius = Mathf.Lerp(currentLightRadius, targetLightRadius, 5f * Time.deltaTime);
+        currentCameraSize = Mathf.Lerp(currentCameraSize, targetCameraSize, 5f * Time.deltaTime);
+        playerCamera.orthographicSize = currentCameraSize;
+    }
     //Light
 
-    public void increaseLightRadius(float radius)
+    public void IncreaseLightRadius()
     {
-        currentLightRadius += radius;
+        targetLightRadius += lightRadiusIncrement;
+        targetCameraSize += cameraZoomIncrement;
+
     }
 
-    public void decreaseLightRadius(float radius)
+    public void DecreaseLightRadius()
     {
-        currentLightRadius -= Mathf.Clamp(radius, 0, radius);
+        targetLightRadius -= lightRadiusIncrement;
+        targetCameraSize -= cameraZoomIncrement;
     }
-
-    public void setLightRadius(float radius)
+    
+    public void Die()
     {
-        currentLightRadius = radius;
-    }
-
-    // Health
-
-    public float healthCurrent()
-    {
-        return currentHealth;
-    }
-
-    public void takeDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-            die();
-    }
-
-    public void restoreHealth(float restoredHealth)
-    {
-        currentHealth += restoredHealth;
-        Mathf.Clamp(currentHealth, 0, currentMaxHealth);
-    }
-
-    public void restoreMaxHealth()
-    {
-        currentHealth = currentMaxHealth;
-    }
-
-    private void die()
-    {
-        Destroy(gameObject, 3); // 3 seconds to compensate for possible death animation
+        
+        isDead = true;
+        //add gameover screen
     }
 
     // Souls
 
-    public int soulsFollowing()
+    public int SoulsFollowing()
     {
         return souls.Count;
     }
 
-    public void addSoul(GameObject soul)
+    public void AddSoul(GameObject soul)
     {
         souls.Push(soul);
+        IncreaseLightRadius();
     }
 
-    public GameObject removeSoul()
+    public GameObject RemoveSoul()
     {
-       return souls.Pop();
+        DecreaseLightRadius();
+        return souls.Pop();
     }
 
-    public void removeSouls(int amountOfSouls)
+    public GameObject[] RemoveSouls(int amountOfSouls)
     {
-        for (int i = 0; i <= amountOfSouls; i++)
-        {
-            removeSoul();
-        }
+        GameObject[] toReturn = souls.ToArray();
+        souls.Clear();
+        playerCamera.orthographicSize = initialCameraSize;
+        targetLightRadius = baseLightRadius;
+        return toReturn;
+        
     }
 
-    public void addSouls(GameObject[] soulsToAdd)
+    public void AddSouls(GameObject[] soulsToAdd)
     {
         for (int i = 0; i <= soulsToAdd.Length; i++)
         {
-            addSoul(soulsToAdd[i]);
+            AddSoul(soulsToAdd[i]);
         }
     }
 
