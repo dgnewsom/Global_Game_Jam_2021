@@ -107,14 +107,13 @@ public class EnemyAgent : MonoBehaviour
     {
         isCharging = false;
         isAttacking = true;
-        print("Attacking");
         currentCharge = 0f;
         enemyAgent.velocity = Vector3.zero;
         enemyAgent.speed = attackSpeed;
         Vector3 direction = player.transform.position - transform.position;
 
         Vector3 moveDir = (new Vector3(direction.x,0f,direction.z)).normalized * attackDistance;
-        Debug.DrawRay(transform.position, moveDir ,Color.red,20f);
+        //Debug.DrawRay(transform.position, moveDir ,Color.red,20f);
         attackTarget = transform.position + moveDir;
         target = attackTarget;
         enemyAgent.SetDestination(target);
@@ -162,5 +161,18 @@ public class EnemyAgent : MonoBehaviour
         }
         target = waypoints[currentWaypoint].position;
         enemyAgent.destination = target;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Player"))
+        {
+            PlayerStats playerStats = player.GetComponent<PlayerStats>();
+            if (playerStats.soulsFollowing() > 0)
+            {
+                GameObject removedSoul = playerStats.removeSoul();
+                removedSoul.GetComponent<SoulAgent>().SetFound(false);
+            }
+        }
     }
 }

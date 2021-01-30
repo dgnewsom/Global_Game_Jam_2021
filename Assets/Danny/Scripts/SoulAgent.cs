@@ -20,15 +20,24 @@ public class SoulAgent : MonoBehaviour
     private bool isFound = false;
     private GameObject player;
     private float followDistance;
-    
+    private Vector3 initialPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        initialPosition = this.transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
         soulAgent = GetComponent<NavMeshAgent>();
         SetWaypoints();
+        ResetSoul();
+    }
+
+    private void ResetSoul()
+    {
+        transform.position = initialPosition;
         soulAgent.speed = speed;
-        player = GameObject.FindGameObjectWithTag("Player");
+        isFound = false;
+        handler.SetHardlock(false);
     }
 
     // Update is called once per frame
@@ -39,7 +48,6 @@ public class SoulAgent : MonoBehaviour
 
         if (!isFound)
         {
-            
             //if next point reached
             if (Vector3.Distance(transform.position, target.position) <= 0.2f)
             {
@@ -53,6 +61,7 @@ public class SoulAgent : MonoBehaviour
             print(followDistance);
             if (distanceToPlayer < followDistance){
                 soulAgent.speed = 0f;
+                handler.SetHardlock(true);
             }
             else
             {
@@ -81,9 +90,16 @@ public class SoulAgent : MonoBehaviour
             soulAgent.destination = target.position;
     }
 
-    internal void SetFound()
+    public void SetFound(bool setIsFound)
     {
-        isFound = true;
+        if (setIsFound)
+        {
+            isFound = true;
+        }
+        else
+        {
+            ResetSoul();
+        }
     }
 
     //Get next waypoint and reset to first if last waypoint reached.
