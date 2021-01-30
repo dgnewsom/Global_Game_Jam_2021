@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Will/MainMenu.unity
     guid: a762ff1d353b79947afeac8d11500b0f
+  - enabled: 1
+    path: Assets/Abdullah/Levels/Level1.unity
+    guid: dd7bcc91b6f66754194d082038fa5f3c
   m_configObjects: {}
