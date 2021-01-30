@@ -14,6 +14,7 @@ public class SoulModelHandlerScript : MonoBehaviour
     [Header("Debug")]
     [SerializeField] Transform targetTransform;
 
+
     private void FixedUpdate()
     {
         if (targetTransform != null)
