@@ -14,6 +14,10 @@ public class SoulModelHandlerScript : MonoBehaviour
     [Header("Debug")]
     [SerializeField] Transform targetTransform;
 
+    private void Start()
+    {
+        UpdateMaterials();
+    }
 
     private void FixedUpdate()
     {
