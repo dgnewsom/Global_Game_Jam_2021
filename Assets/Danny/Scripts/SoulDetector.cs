@@ -21,8 +21,7 @@ public class SoulDetector : MonoBehaviour
         currentLightRadius = playerStats.GetLightRadius();
         detectionCollider.radius = currentLightRadius;
     }
-
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         if(collider.gameObject.tag == "Soul")
         {

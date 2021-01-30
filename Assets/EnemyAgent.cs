@@ -28,6 +28,7 @@ public class EnemyAgent : MonoBehaviour
     private float currentCharge = 0f;
     bool isAttacking = false;
     private Vector3 attackTarget;
+    private bool isDead;
     
 
     // Start is called before the first frame update
@@ -39,60 +40,69 @@ public class EnemyAgent : MonoBehaviour
     private void ResetEnemy()
     {
         initialPosition = GetComponentInParent<Transform>().position;
-        print(initialPosition);
         enemyAgent = GetComponent<NavMeshAgent>();
         SetWaypoints();
         enemyAgent.speed = speed;
         player = GameObject.FindGameObjectWithTag("Player");
+        isAttacking = false;
+        isCharging = false;
+        isDead = false;
+        currentCharge = 0f;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isAttacking)
+        if (!isDead)
         {
-            if(Vector3.Distance(attackTarget, transform.position) <= 2f)
+
+            if (isAttacking)
             {
-                Death();
+                if(Vector3.Distance(attackTarget, transform.position) <= 1f)
+                {
+                    Death();
+                }
             }
-        }
-        else if (!isCharging)
-        {
-            //if next point reached
-            if (!isAttacking)
+            else if (!isCharging)
             {
-                enemyAgent.speed = speed;
-            }
+                //if next point reached
+                if (!isAttacking)
+                {
+                    enemyAgent.speed = speed;
+                }
             
-            if (Vector3.Distance(transform.position, target) <= 0.2f)
-            {
-                GetNextWaypoint();
+                if (Vector3.Distance(transform.position, target) <= 0.2f)
+                {
+                    GetNextWaypoint();
+                }
             }
-        }
-        else
-        {
-            currentCharge += Time.deltaTime;
-            enemyAgent.destination = player.transform.position;
-            enemyAgent.speed = speed / 2;
-            if (currentCharge > chargeDelay)
+            else
             {
-                AttackPlayer();
-            }
+                currentCharge += Time.deltaTime;
+                enemyAgent.destination = player.transform.position;
+                enemyAgent.speed = speed / 2;
+                if (currentCharge > chargeDelay)
+                {
+                    AttackPlayer();
+                }
             
-            // todo set shader
+                // todo set shader
+            }
         }
 
     }
 
     public void Death()
     {
+        isDead = true;
         GameObject reSpawn = GameObject.Instantiate(prefabForRespawn,initialPosition,Quaternion.identity,this.transform.parent);
         reSpawn.GetComponent<EnemyAgent>().ResetEnemy();
         isAttacking = false;
-        GameObject.Destroy(this.gameObject);
-        print(this.ToString() + " - Dead");
+        enemyAgent.speed = 0;
+        GameObject.Destroy(this.gameObject,1f);
     }
 
+    
     private void AttackPlayer()
     {
         isCharging = false;
@@ -101,7 +111,9 @@ public class EnemyAgent : MonoBehaviour
         currentCharge = 0f;
         enemyAgent.velocity = Vector3.zero;
         enemyAgent.speed = attackSpeed;
-        Vector3 moveDir = (player.transform.position - transform.position).normalized * attackDistance;
+        Vector3 direction = player.transform.position - transform.position;
+
+        Vector3 moveDir = (new Vector3(direction.x,0f,direction.z)).normalized * attackDistance;
         Debug.DrawRay(transform.position, moveDir ,Color.red,20f);
         attackTarget = transform.position + moveDir;
         target = attackTarget;
