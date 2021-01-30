@@ -25,11 +25,14 @@ Material:
     - HardLockActive: 0
     - Vector1_208E7DC4: 2
     - Vector1_6FA86352: 1
-    - _ActiveRange: 3
+    - _ActiveRange: 5
     - _AutoOpacity: 0
+    - _DeadZone: 3
+    - _Distance: 3
+    - _HardLockActive: 0
     - _IsFound: 1
     m_Colors:
     - Color_F0FB4436: {r: 1.2674555, g: 2.828427, b: 2.573673, a: 1}
     - Color_F9EAC4CD: {r: 1.4862194, g: 5.1497912, b: 5.3403134, a: 1}
     - Vector3_54F66C5D: {r: 0, g: 0.32, b: 0.51, a: 0}
-    - _TargetPos: {r: -2, g: 0.5, b: 0, a: 0}
+    - _TargetPos: {r: 0, g: 0, b: 0, a: 0}
