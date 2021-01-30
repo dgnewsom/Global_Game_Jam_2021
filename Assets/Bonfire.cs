@@ -31,7 +31,15 @@ public class Bonfire : MonoBehaviour
         bonfireSouls = new Stack<GameObject>();
         atBonfire = false;
         notifText.text = "x" + requiredSouls.ToString();
-
+        Flame.SetActive(false);
+        if (playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+        if (mouseGroup == null)
+        {
+            mouseGroup = FindObjectOfType<MouseGroupScript>().GetComponent<CanvasGroup>();
+        }
         
     }
 
@@ -70,7 +78,12 @@ public class Bonfire : MonoBehaviour
 
     public void OnDeposit(InputAction.CallbackContext context) 
     {
+        print("PlayerClick");
         if (playerStats.SoulsFollowing() > 0 && atBonfire && context.performed) {
+            if (bonfireSouls.Count== 0)
+            {
+                Flame.SetActive(true);
+            }
             bonfireSouls.Push(playerStats.RemoveSoul());
             currentSouls++;
             checkSouls();
@@ -83,6 +96,10 @@ public class Bonfire : MonoBehaviour
             playerStats.AddSoul(bonfireSouls.Pop());
             currentSouls--;
             checkSouls();
+            if (bonfireSouls.Count == 0)
+            {
+                Flame.SetActive(false);
+            }
         }
     }
 }
