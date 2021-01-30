@@ -24,7 +24,6 @@ public class SoulDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        print(collider.ToString());
         if(collider.gameObject.tag == "Soul")
         {
             collider.gameObject.GetComponent<SoulAgent>().SetFound();
