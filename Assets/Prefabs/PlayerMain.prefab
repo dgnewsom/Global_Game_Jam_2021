@@ -317,9 +317,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6359905725118943082}
-  moveSpeed: 5
+  moveForce: 5000
+  maxSpeed: 5
   bonfireScript: {fileID: 0}
-  moveDir: {x: 0, y: 0}
+  moveDir: {x: 0, y: 0, z: 0}
   isMoving: 0
 --- !u!136 &6359905725118943083
 CapsuleCollider:
