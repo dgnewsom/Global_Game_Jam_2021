@@ -22,11 +22,13 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Boolean_98C2B813: 0
-    - Vector1_18002CCA: 0.9
+    - Vector1_18002CCA: 2
     - Vector1_9E04C9C6: 0.2
     - Vector1_D184FC93: 1
     - Vector1_D534A07F: 5
     - Vector1_E54DD5A8: 1
+    - _LerpBetweenState: 1
+    - _MainOpacity: 1
     m_Colors:
     - Color_93F55094: {r: 2, g: 0, b: 0, a: 1}
-    - Color_AB5299F4: {r: 5.3403134, g: 0.1763312, b: 0.1763312, a: 1}
+    - Color_AB5299F4: {r: 13.76636, g: 0.50452626, b: 0.50452626, a: 1}

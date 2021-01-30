@@ -103,7 +103,7 @@ public class EnemyAgent : MonoBehaviour
         reSpawn.GetComponent<EnemyAgent>().ResetEnemy();
         isAttacking = false;
         enemyAgent.speed = 0;
-        GameObject.Destroy(this.gameObject,1f);
+        GameObject.Destroy(this.gameObject,2.1f);
     }
 
     

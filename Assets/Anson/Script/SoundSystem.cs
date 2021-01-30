@@ -22,6 +22,7 @@ public class SoundSystem : MonoBehaviour
         foreach (Sound s in newSounds)
         {
             AddSounds(s);
+            s.SoundSystem = this;
         }
     }
 

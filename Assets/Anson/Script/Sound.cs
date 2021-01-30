@@ -11,6 +11,7 @@ public class Sound : MonoBehaviour
     [SerializeField] SoundSystem soundSystem;
 
     public AudioMixer AudioMixer { get => audioMixer; set => audioMixer = value; }
+    public SoundSystem SoundSystem { get => soundSystem; set => soundSystem = value; }
 
     private void Awake()
     {
@@ -38,6 +39,10 @@ public class Sound : MonoBehaviour
     public void Resume()
     {
         source.UnPause();
+    }
+    public void Play()
+    {
+        source.Play();
     }
     public void Stop()
     {

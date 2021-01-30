@@ -23,7 +23,15 @@ Material:
     m_Floats:
     - Vector1_208E7DC4: 0.77
     - Vector1_6FA86352: 0
+    - Vector1_AF40E6BD: 0
+    - _ActiveRange: 5
+    - _AutoOpacity: 1
+    - _DeadZone: 3
+    - _Distance: 3
+    - _HardLockActive: 0
+    - _IsFound: 0
     m_Colors:
     - Color_F0FB4436: {r: 8.574187, g: 8.574187, b: 8.574187, a: 0}
     - Color_F9EAC4CD: {r: 2.6701567, g: 2.6701567, b: 2.6701567, a: 1}
     - Vector3_54F66C5D: {r: 0, g: 0, b: 0, a: 0}
+    - _TargetPos: {r: 0, g: 0, b: 0, a: 0}

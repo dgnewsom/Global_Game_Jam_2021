@@ -7,6 +7,7 @@ public class EnemyModelHandler : MonoBehaviour
 {
     [Range(0f,1f)]
     [SerializeField] float charge;
+    [SerializeField] AnimationCurve opacityCurve;
     [Header("Core")]
     [SerializeField] MeshRenderer coreMesh;
     [SerializeField] Material coreMaterial;
@@ -36,9 +37,10 @@ public class EnemyModelHandler : MonoBehaviour
 
     public void UpdateCharge()
     {
-        coreMaterial.SetFloat("_MainOpacity", charge);
+        
+        coreMaterial.SetFloat("_MainOpacity", opacityCurve.Evaluate(charge));
         coreMaterial.SetFloat("_LerpBetweenState", charge);
-        shardEffect.SetFloat("MainOpacity", charge);
+        shardEffect.SetFloat("MainOpacity", opacityCurve.Evaluate(charge));
 
     }
 }

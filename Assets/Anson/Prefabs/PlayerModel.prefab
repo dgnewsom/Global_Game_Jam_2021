@@ -545,7 +545,7 @@ MonoBehaviour:
   intensityClamp: 3
   flameEffect: {fileID: 730031704353863246}
   core: {fileID: 730031704852779683}
-  coreMultiplier: 0.5
+  coreMultiplier: 0.2
   ringEffect: {fileID: 181281212}
 --- !u!1 &2145364166316825894
 GameObject:

@@ -22,6 +22,10 @@ public class SoulAgent : MonoBehaviour
     private float followDistance;
     private Vector3 initialPosition;
 
+    //Adding Sounds
+    [Header("Sounds")]
+    [SerializeField] List<Sound> pickUpSounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +61,9 @@ public class SoulAgent : MonoBehaviour
         else
         {
             soulAgent.destination = player.transform.position;
-            followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius(),3f,10f);
+            followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius()*.2f,1f,10f);
             print(followDistance);
+            handler.SetDeadZone(followDistance);
             if (distanceToPlayer < followDistance){
                 soulAgent.speed = 0f;
                 handler.SetHardlock(true);
@@ -92,6 +97,11 @@ public class SoulAgent : MonoBehaviour
 
     public void SetFound(bool setIsFound)
     {
+        if (!isFound && setIsFound)
+        {
+            PlaySound_PickUp();
+
+        }
         if (setIsFound)
         {
             isFound = true;
@@ -115,5 +125,12 @@ public class SoulAgent : MonoBehaviour
         }
         target = waypoints[currentWaypoint];
         soulAgent.destination = target.position;
+    }
+
+
+    void PlaySound_PickUp()
+    {
+        print(this + " play found sound");
+        pickUpSounds[UnityEngine.Random.Range(0, pickUpSounds.Count)].Play();
     }
 }
