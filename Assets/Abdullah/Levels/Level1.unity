@@ -106,21 +106,21 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 1
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 38.11
+    agentClimb: 0.6
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 35aa8d1aed3d65741a114fb75571e3d5, type: 2}
 --- !u!1 &206400099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1130262173398099530, guid: 5ff0847d70093824abe3ecc17f3637ba,
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 450895561}
   - component: {fileID: 450895563}
   m_Layer: 0
-  m_Name: End Game
+  m_Name: End Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,6 +294,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 218270458}
+--- !u!1 &525431303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525431304}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &525431304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525431303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.513119, y: -4.766793, z: -22.460793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556952806
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,11 +552,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1683858772, guid: 009ef8c9fba1b0348aa9fe676621c983, type: 3}
       propertyPath: m_SpotAngle
-      value: 179
+      value: 107.26532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683858772, guid: 009ef8c9fba1b0348aa9fe676621c983, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 11.451203
       objectReference: {fileID: 0}
     - target: {fileID: 1683858772, guid: 009ef8c9fba1b0348aa9fe676621c983, type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2692459997418685608, guid: 009ef8c9fba1b0348aa9fe676621c983,
         type: 3}
@@ -688,7 +722,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh76566
+  m_Name: pb_Mesh37540
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -851,7 +885,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh76552
+  m_Name: pb_Mesh37524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3422,7 +3456,7 @@ Transform:
   m_GameObject: {fileID: 1239226684}
   m_LocalRotation: {x: -0, y: -0.3826827, z: -0, w: 0.92387986}
   m_LocalPosition: {x: 5.6959877, y: 0, z: -32.4246}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -3457,7 +3491,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1852395928
 MeshCollider:
@@ -6925,7 +6959,7 @@ Transform:
   m_GameObject: {fileID: 1852395927}
   m_LocalRotation: {x: -0, y: -0.3826827, z: -0, w: 0.92387986}
   m_LocalPosition: {x: -10.355335, y: 0, z: -24.99997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -7030,7 +7064,7 @@ PrefabInstance:
     - target: {fileID: 374871897770907625, guid: 3e10a802aeaf8644286d5df5545f6f4d,
         type: 3}
       propertyPath: orthographic size
-      value: 4.24
+      value: 7.94
       objectReference: {fileID: 0}
     - target: {fileID: 374871897770907630, guid: 3e10a802aeaf8644286d5df5545f6f4d,
         type: 3}
