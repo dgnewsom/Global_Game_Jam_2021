@@ -18,6 +18,8 @@ public class EnemyAgent : MonoBehaviour
     private float attackDistance = 10f;
     [SerializeField]
     GameObject prefabForRespawn;
+    [SerializeField]
+    private EnemyModelHandler handler;
     private Vector3 initialPosition;
     private NavMeshAgent enemyAgent;
     private Transform[] waypoints;
@@ -48,6 +50,7 @@ public class EnemyAgent : MonoBehaviour
         isCharging = false;
         isDead = false;
         currentCharge = 0f;
+        handler.UpdateCharge(0f);
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class EnemyAgent : MonoBehaviour
 
             if (isAttacking)
             {
+                handler.UpdateCharge(1f);
                 if(Vector3.Distance(attackTarget, transform.position) <= 1f)
                 {
                     Death();
@@ -85,8 +89,8 @@ public class EnemyAgent : MonoBehaviour
                 {
                     AttackPlayer();
                 }
-            
-                // todo set shader
+
+                handler.UpdateCharge(currentCharge / chargeDelay);
             }
         }
 

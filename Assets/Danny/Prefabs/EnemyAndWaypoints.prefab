@@ -162,9 +162,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4206416216290126187, guid: e2be2fa0b22c3004298ea831cecfb0ef,
         type: 3}
+      propertyPath: chargeDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206416216290126187, guid: e2be2fa0b22c3004298ea831cecfb0ef,
+        type: 3}
       propertyPath: waypointsToFollow
       value: 
       objectReference: {fileID: 275081079061225269}
+    - target: {fileID: 8122695226369135621, guid: e2be2fa0b22c3004298ea831cecfb0ef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2be2fa0b22c3004298ea831cecfb0ef, type: 3}
 --- !u!4 &275081078791506966 stripped
