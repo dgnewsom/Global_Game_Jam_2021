@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 public class PmRB : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
-    [SerializeField] float moveSpeed;
+    [SerializeField] float moveForce;
+    [SerializeField] float maxSpeed;
     [SerializeField] Bonfire bonfireScript;
+    [SerializeField] Vector3 moveDir;
+    [SerializeField] bool isMoving;
 
 
     private void Start()
@@ -15,11 +18,25 @@ public class PmRB : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            Move();
+        }
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        rb.velocity = new Vector3(context.ReadValue<Vector2>().x * moveSpeed, 0, context.ReadValue<Vector2>().y * moveSpeed);
+        if (context.performed)
+        {
+            isMoving = true;
+            moveDir = new Vector3(context.ReadValue<Vector2>().x,0,context.ReadValue<Vector2>().y);
+        }
+        else
+        {
+            isMoving = false;
+        }
     }
 
     public void Deposit(InputAction.CallbackContext context)
@@ -37,5 +54,14 @@ public class PmRB : MonoBehaviour
         {
             bonfireScript.OnWithdraw(context);
         }
+    }
+
+    void Move()
+    {
+        if (rb.velocity.magnitude<= maxSpeed)
+        {
+            rb.AddForce(moveDir * moveForce * rb.mass * Time.deltaTime);
+        }
+
     }
 }

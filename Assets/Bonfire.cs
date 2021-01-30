@@ -24,11 +24,15 @@ public class Bonfire : MonoBehaviour
     [Header("Fire Effect")]
     [SerializeField] GameObject Flame;
 
+    public Stack<GameObject> BonfireSouls { get => bonfireSouls; set => bonfireSouls = value; }
+
     private void Awake()
     {
         bonfireSouls = new Stack<GameObject>();
         atBonfire = false;
         notifText.text = "x" + requiredSouls.ToString();
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -76,7 +80,7 @@ public class Bonfire : MonoBehaviour
     public void OnWithdraw(InputAction.CallbackContext context) {
         if (currentSouls > 0 && atBonfire && context.performed)
         {
-            playerStats.addSoul(bonfireSouls.Pop());
+            playerStats.AddSoul(bonfireSouls.Pop());
             currentSouls--;
             checkSouls();
         }

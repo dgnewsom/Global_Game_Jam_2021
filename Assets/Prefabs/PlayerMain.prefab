@@ -60,7 +60,7 @@ Camera:
   far clip plane: 10000
   field of view: 50
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -296,14 +296,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6359905725118942995}
   serializedVersion: 2
-  m_Mass: 0.3
-  m_Drag: 0.1
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 4
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &6359905725118943081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +319,8 @@ MonoBehaviour:
   rb: {fileID: 6359905725118943082}
   moveSpeed: 5
   bonfireScript: {fileID: 0}
+  moveDir: {x: 0, y: 0}
+  isMoving: 0
 --- !u!136 &6359905725118943083
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -326,7 +328,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6359905725118942995}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 51d4619e73057984c8cfc1a498e0a4cc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -345,10 +347,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e089f21a28624548af62cf3cb18ce30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  baseLightRadius: 5
-  maxSoulsFollowing: 0
-  currentLightRadius: 0
+  playerCamera: {fileID: 3369939315271189651}
+  cameraRange: 10
+  cameraTransitionSpeed: 5
+  maxSoulsFollowing: 30
+  baseLightRadius: 2
+  maxLightRadius: 20
+  lightTransitionSpeed: 5
 --- !u!1001 &564674254196429415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -434,6 +439,10 @@ PrefabInstance:
     - target: {fileID: 181281211, guid: 8cd778bfe4620bd4bb64010abfa33eb9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921074385, guid: 8cd778bfe4620bd4bb64010abfa33eb9, type: 3}
+      propertyPath: coreMultiplier
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 730031704353863246, guid: 8cd778bfe4620bd4bb64010abfa33eb9,
         type: 3}
