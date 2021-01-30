@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TorchController : MonoBehaviour
 {
-    public int requiredSouls;
     public float brightness;
 
     private int currentSouls;
@@ -21,8 +20,13 @@ public class TorchController : MonoBehaviour
     {
         if (other.tag == "enemy") // can be exchanged for the layer system
         {
-            Destroy(other.gameObject);
+            killEnemy(other.gameObject);
         }
+    }
+
+    public void killEnemy(GameObject enemy)
+    {
+        Destroy(enemy);
     }
 
     public void lightUp()
