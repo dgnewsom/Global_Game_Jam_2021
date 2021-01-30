@@ -6,6 +6,7 @@ public class MainMenuController : MonoBehaviour
 {
     public GameObject[] menuArt;
     public LeanTweenType easeType;
+
     public float defaultFallTime;
     public float fallMultiplier;
 
@@ -33,6 +34,10 @@ public class MainMenuController : MonoBehaviour
         }
         yield return new WaitForSeconds(4);
         music.Play();
+        yield return new WaitForSeconds(5);
+        LeanTween.alphaCanvas(fade, 1, 1).setEase(easeType);
+        yield return new WaitForSeconds(1);
+        LeanTween.alphaCanvas(fade, 0, 1).setEase(easeType);
         yield return new WaitForSeconds(5);
         LeanTween.alphaCanvas(startBtn, 1, 1).setEase(easeType);
         yield return new WaitForSeconds(1);
