@@ -79,6 +79,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1c18abee-681f-47e1-b1b3-eb64a264f3b5
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 374871896951443607}
+        m_MethodName: Deposit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a9181bae-5e25-41e9-95bf-12170f3f9100
+    m_ActionName: Player/Deposit[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 374871896951443607}
+        m_MethodName: Withdraw
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c76f9bda-a365-4bfe-8222-7455fef6563b
+    m_ActionName: Player/Withdraw[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -157,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 374871896951443604}
   moveSpeed: 5
+  bonfireScript: {fileID: 0}
 --- !u!136 &374871896951443605
 CapsuleCollider:
   m_ObjectHideFlags: 0
