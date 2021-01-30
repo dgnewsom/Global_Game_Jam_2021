@@ -486,9 +486,8 @@ VisualEffectResource:
       _DistortionSpeed__ = float2(0, -0.200000003);\n\t\t\t    }\n\t\t\t    o._DistortionSpeed
       = _DistortionSpeed__;float _Opacity__ = (float)0;{\n\t\t\t        float tmp_be
       = attributes.age / attributes.lifetime;\n\t\t\t        float tmp_bf = SampleCurve(uniform_f,tmp_be);\n\t\t\t       
-      float tmp_bg = uniform_e * tmp_bf;\n\t\t\t        float tmp_bi = max(tmp_bg,
-      (float)0);\n\t\t\t        float tmp_bk = min(tmp_bi, (float)1);\n\t\t\t       
-      \n\t\t\t        _Opacity__ = tmp_bk;\n\t\t\t    }\n\t\t\t    o._Opacity = _Opacity__;float
+      float tmp_bg = uniform_e * tmp_bf;\n\t\t\t        float tmp_bh = saturate(tmp_bg);\n\t\t\t       
+      \n\t\t\t        _Opacity__ = tmp_bh;\n\t\t\t    }\n\t\t\t    o._Opacity = _Opacity__;float
       _DistortAmount__ = (float)0;{\n\t\t\t        \n\t\t\t        _DistortAmount__
       = (float)0.100000001;\n\t\t\t    }\n\t\t\t    o._DistortAmount = _DistortAmount__;float2
       _DisolveSpeed__ = (float2)0;{\n\t\t\t        \n\t\t\t        _DisolveSpeed__
@@ -816,9 +815,8 @@ VisualEffectResource:
       _DistortionSpeed__ = float2(0, -0.200000003);\n\t\t\t    }\n\t\t\t    o._DistortionSpeed
       = _DistortionSpeed__;float _Opacity__ = (float)0;{\n\t\t\t        float tmp_be
       = attributes.age / attributes.lifetime;\n\t\t\t        float tmp_bf = SampleCurve(uniform_f,tmp_be);\n\t\t\t       
-      float tmp_bg = uniform_e * tmp_bf;\n\t\t\t        float tmp_bi = max(tmp_bg,
-      (float)0);\n\t\t\t        float tmp_bk = min(tmp_bi, (float)1);\n\t\t\t       
-      \n\t\t\t        _Opacity__ = tmp_bk;\n\t\t\t    }\n\t\t\t    o._Opacity = _Opacity__;float
+      float tmp_bg = uniform_e * tmp_bf;\n\t\t\t        float tmp_bh = saturate(tmp_bg);\n\t\t\t       
+      \n\t\t\t        _Opacity__ = tmp_bh;\n\t\t\t    }\n\t\t\t    o._Opacity = _Opacity__;float
       _DistortAmount__ = (float)0;{\n\t\t\t        \n\t\t\t        _DistortAmount__
       = (float)0.100000001;\n\t\t\t    }\n\t\t\t    o._DistortAmount = _DistortAmount__;float2
       _DisolveSpeed__ = (float2)0;{\n\t\t\t        \n\t\t\t        _DisolveSpeed__
@@ -1042,22 +1040,22 @@ VisualEffectResource:
   m_Infos:
     m_Expressions:
       m_Expressions:
-      - op: 8
+      - op: 1
         valueIndex: 0
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: -1
-      - op: 1
+        data[3]: 6
+      - op: 8
         valueIndex: 1
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 6
+        data[3]: -1
       - op: 62
         valueIndex: 2
-        data[0]: 1
-        data[1]: 0
+        data[0]: 0
+        data[1]: 1
         data[2]: -1
         data[3]: 6
       - op: 1
@@ -1071,34 +1069,34 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
+        data[3]: 1
+      - op: 1
+        valueIndex: 5
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 13
+      - op: 1
+        valueIndex: 6
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
         data[3]: 13
       - op: 56
-        valueIndex: 5
-        data[0]: 4
+        valueIndex: 7
+        data[0]: 3
         data[1]: -1
         data[2]: -1
         data[3]: 0
       - op: 1
-        valueIndex: 9
+        valueIndex: 11
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
       - op: 56
-        valueIndex: 10
-        data[0]: 3
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 14
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 13
-      - op: 1
-        valueIndex: 15
-        data[0]: -1
+        valueIndex: 12
+        data[0]: 6
         data[1]: -1
         data[2]: -1
         data[3]: 1
@@ -1114,18 +1112,18 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
+      - op: 56
         valueIndex: 18
+        data[0]: 5
+        data[1]: -1
+        data[2]: -1
+        data[3]: 2
+      - op: 1
+        valueIndex: 22
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 56
-        valueIndex: 19
-        data[0]: 8
-        data[1]: -1
-        data[2]: -1
-        data[3]: 2
       - op: 1
         valueIndex: 23
         data[0]: -1
@@ -1149,37 +1147,37 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 29
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 32
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
         data[3]: 1
-      - op: 1
-        valueIndex: 27
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 30
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
       - op: 1
         valueIndex: 33
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 2
       - op: 1
-        valueIndex: 34
+        valueIndex: 35
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 2
+        data[3]: 7
       - op: 1
         valueIndex: 36
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 7
+        data[3]: 1
       - op: 1
         valueIndex: 37
         data[0]: -1
@@ -1218,7 +1216,7 @@ VisualEffectResource:
         data[3]: 1
       - op: 26
         valueIndex: 44
-        data[0]: 19
+        data[0]: 17
         data[1]: 18
         data[2]: -1
         data[3]: 3
@@ -1270,48 +1268,48 @@ VisualEffectResource:
     m_PropertySheet:
       m_Float:
         m_Array:
-        - m_ExpressionIndex: 6
+        - m_ExpressionIndex: 4
           m_Value: 720
-        - m_ExpressionIndex: 9
-          m_Value: 4
+        - m_ExpressionIndex: 8
+          m_Value: -360
         - m_ExpressionIndex: 10
-          m_Value: 0.5
+          m_Value: 4
         - m_ExpressionIndex: 11
           m_Value: 2
-        - m_ExpressionIndex: 12
-          m_Value: -360
-        - m_ExpressionIndex: 14
-          m_Value: -2
-        - m_ExpressionIndex: 15
+        - m_ExpressionIndex: 13
           m_Value: 0.5
+        - m_ExpressionIndex: 14
+          m_Value: 0.5
+        - m_ExpressionIndex: 15
+          m_Value: -2
         - m_ExpressionIndex: 16
           m_Value: 0
-        - m_ExpressionIndex: 17
-          m_Value: 1
-        - m_ExpressionIndex: 20
+        - m_ExpressionIndex: 19
           m_Value: 90
+        - m_ExpressionIndex: 22
+          m_Value: 0.2
         - m_ExpressionIndex: 23
           m_Value: 0.1
         - m_ExpressionIndex: 25
           m_Value: 1.2
         - m_ExpressionIndex: 26
-          m_Value: 0.2
-        - m_ExpressionIndex: 27
           m_Value: 5
+        - m_ExpressionIndex: 27
+          m_Value: 1
         - m_ExpressionIndex: 28
           m_Value: 2
       m_Vector2f:
         m_Array:
-        - m_ExpressionIndex: 21
+        - m_ExpressionIndex: 20
           m_Value: {x: 0, y: -0.2}
         - m_ExpressionIndex: 24
           m_Value: {x: -0.2, y: -0.5}
       m_Vector3f:
         m_Array:
+        - m_ExpressionIndex: 17
+          m_Value: {x: 0.00001, y: 0, z: 0.00001}
         - m_ExpressionIndex: 18
           m_Value: {x: -1, y: -1, z: -1}
-        - m_ExpressionIndex: 19
-          m_Value: {x: 0.00001, y: 0, z: 0.00001}
         - m_ExpressionIndex: 33
           m_Value: {x: 2, y: 3, z: 2}
         - m_ExpressionIndex: 34
@@ -1322,7 +1320,7 @@ VisualEffectResource:
           m_Value: {x: 21.361254, y: 21.361254, z: 21.361254, w: 1}
       m_Uint:
         m_Array:
-        - m_ExpressionIndex: 1
+        - m_ExpressionIndex: 0
           m_Value: 0
         - m_ExpressionIndex: 31
           m_Value: 4294967295
@@ -1366,7 +1364,7 @@ VisualEffectResource:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-        - m_ExpressionIndex: 4
+        - m_ExpressionIndex: 5
           m_Value:
             serializedVersion: 2
             m_Curve:
@@ -1409,7 +1407,7 @@ VisualEffectResource:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-        - m_ExpressionIndex: 8
+        - m_ExpressionIndex: 6
           m_Value:
             serializedVersion: 2
             m_Curve:
@@ -1438,7 +1436,7 @@ VisualEffectResource:
         m_Array: []
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 22
+        - m_ExpressionIndex: 21
           m_Value: {fileID: 2800000, guid: ff82b7901fe315246acb49e56961db75, type: 3}
         - m_ExpressionIndex: 32
           m_Value: {fileID: -8175945838122044379, guid: 515f235399af25c4a985ec3e50d2f0a5,
@@ -1449,11 +1447,11 @@ VisualEffectResource:
     - nameId: MainColour
       index: 30
     - nameId: Opacity
-      index: 10
+      index: 13
     - nameId: SizeRange
       index: 11
     - nameId: Velocity Range
-      index: 19
+      index: 17
     m_Buffers:
     - type: 1
       size: 208
@@ -1596,7 +1594,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Rate
-        index: 27
+        index: 26
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -1642,7 +1640,7 @@ VisualEffectResource:
       - nameId: A_a
         index: 29
       - nameId: B_a
-        index: 19
+        index: 17
       params:
       - nameId: bounds_center
         index: 34
@@ -1695,17 +1693,17 @@ VisualEffectResource:
       - nameId: uniform_b
         index: 11
       - nameId: uniform_c
-        index: 13
+        index: 9
       - nameId: uniform_d
         index: 2
       - nameId: _MainColour
         index: 30
       - nameId: uniform_e
-        index: 10
+        index: 13
       - nameId: uniform_f
-        index: 5
+        index: 12
       - nameId: Texture2D_A8C595E1
-        index: 22
+        index: 21
       params:
       - nameId: mesh
         index: 32
