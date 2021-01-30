@@ -78,7 +78,8 @@ public class PlayerStats : MonoBehaviour
 
     public void addSoul(GameObject soul)
     {
-        souls.Push(soul);
+        if (!souls.Contains(soul)) {
+            souls.Push(soul); }
     }
 
     public GameObject removeSoul()
