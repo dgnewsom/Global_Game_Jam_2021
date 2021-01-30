@@ -1,38 +1,42 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class SoulAgent : MonoBehaviour
+public class EnemyAgent : MonoBehaviour
 {
     [SerializeField]
     private float speed = 1f;
     [SerializeField]
     private Transform waypointsToFollow;
+    [SerializeField]
+    private float chargeDelay = 2f;
     private Transform[] waypoints;
-    private NavMeshAgent soulAgent;
+    private NavMeshAgent enemyAgent;
     private Transform target;
     private int currentWaypoint;
-    private bool isFound = false;
+    private bool isCharging = false;
     private GameObject player;
+    private float currentCharge = 0f;
+    bool isAttacking = false;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        soulAgent = GetComponent<NavMeshAgent>();
+        enemyAgent = GetComponent<NavMeshAgent>();
         SetWaypoints();
-        soulAgent.speed = speed;
+        enemyAgent.speed = speed;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isFound)
+        if (!isCharging)
         {
             //if next point reached
+            enemyAgent.speed = speed;
             if (Vector3.Distance(transform.position, target.position) <= 0.2f)
             {
                 GetNextWaypoint();
@@ -40,16 +44,26 @@ public class SoulAgent : MonoBehaviour
         }
         else
         {
-            soulAgent.destination = player.transform.position;
-            if (Vector3.Distance(transform.position, player.transform.position) < player.GetComponent<PlayerStats>().GetLightRadius() -1f){
-                soulAgent.speed = 0f;
-            }
-            else
+            currentCharge += Time.deltaTime;
+            enemyAgent.destination = player.transform.position;
+            enemyAgent.speed = speed / 2;
+            if (currentCharge > chargeDelay)
             {
-                soulAgent.speed = speed;
+                AttackPlayer();
             }
+            print("Charging - " + currentCharge / chargeDelay);
+            // todo set shader
         }
-        
+
+    }
+
+    private void AttackPlayer()
+    {
+        isCharging = false;
+        isAttacking = true;
+        print("Attacking");
+        currentCharge = 0f;
+        // todo charge code
     }
 
     public void SetWaypoints()
@@ -68,12 +82,16 @@ public class SoulAgent : MonoBehaviour
             Debug.LogError(e);
         }
         if (target != null)
-            soulAgent.destination = target.position;
+            enemyAgent.destination = target.position;
     }
 
-    internal void SetFound()
+    internal void SetCharging()
     {
-        isFound = true;
+        if (!isAttacking)
+        {
+            isCharging = true;
+        }
+        
     }
 
     //Get next waypoint and reset to first if last waypoint reached.
@@ -88,6 +106,6 @@ public class SoulAgent : MonoBehaviour
             currentWaypoint++;
         }
         target = waypoints[currentWaypoint];
-        soulAgent.destination = target.position;
+        enemyAgent.destination = target.position;
     }
 }
