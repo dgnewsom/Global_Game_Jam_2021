@@ -34,4 +34,8 @@ public class DoorOpen : MonoBehaviour
         }
         
     }
+
+    public bool LevelComplete() {
+        return doorOpened;
+    }
 }
