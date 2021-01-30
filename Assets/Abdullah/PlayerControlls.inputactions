@@ -12,6 +12,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Deposit",
+                    "type": "Button",
+                    "id": "a9181bae-5e25-41e9-95bf-12170f3f9100",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Withdraw",
+                    "type": "Button",
+                    "id": "c76f9bda-a365-4bfe-8222-7455fef6563b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -69,6 +85,28 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "541b814e-01d7-41ad-bcfb-aadfabf1ba6c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Deposit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "931c5b35-c0b2-4f5e-833b-f92300e67f20",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Withdraw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
