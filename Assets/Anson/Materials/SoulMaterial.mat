@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SoulMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 9795731f444342449b21f0e78710278f,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Boolean_D55EAAD5: 1
+    - HardLockActive: 0
+    - Vector1_208E7DC4: 2
+    - Vector1_6FA86352: 1
+    - _ActiveRange: 3
+    - _AutoOpacity: 0
+    - _IsFound: 1
+    m_Colors:
+    - Color_F0FB4436: {r: 1.2674555, g: 2.828427, b: 2.573673, a: 1}
+    - Color_F9EAC4CD: {r: 1.4862194, g: 5.1497912, b: 5.3403134, a: 1}
+    - Vector3_54F66C5D: {r: 0, g: 0.32, b: 0.51, a: 0}
+    - _TargetPos: {r: -2, g: 0.5, b: 0, a: 0}
