@@ -21,12 +21,11 @@ public class SoulDetector : MonoBehaviour
         currentLightRadius = playerStats.GetLightRadius();
         detectionCollider.radius = currentLightRadius;
     }
-
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         if(collider.gameObject.tag == "Soul")
         {
-            collider.gameObject.GetComponent<SoulAgent>().SetFound();
+            collider.gameObject.GetComponent<SoulAgent>().SetFound(true);
             playerStats.addSoul(collider.gameObject);
         }
         if(collider.gameObject.tag == "Enemy")
