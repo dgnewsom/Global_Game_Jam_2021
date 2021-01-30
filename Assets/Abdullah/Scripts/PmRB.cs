@@ -16,6 +16,10 @@ public class PmRB : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (bonfireScript == null)
+        {
+            bonfireScript = FindObjectOfType<Bonfire>();
+        }
     }
 
     private void FixedUpdate()
