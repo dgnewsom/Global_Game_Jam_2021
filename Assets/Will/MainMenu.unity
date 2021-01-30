@@ -2221,7 +2221,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 532feac07b127744297c12c34f527348, type: 3}
+      objectReference: {fileID: 8300000, guid: 1bd4054e54f03c04f895c4219764669d, type: 3}
     - target: {fileID: 4883952973044155771, guid: cf67a759ee0cfa44a8ab3f4a6f5cc64f,
         type: 3}
       propertyPath: audioMixer
