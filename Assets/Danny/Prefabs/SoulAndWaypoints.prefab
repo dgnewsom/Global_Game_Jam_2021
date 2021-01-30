@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3214ffc0d0b0e874f8fd1aa7c1172816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   waypointsToFollow: {fileID: 6896057170513210877}
   handler: {fileID: 691283574931854510}
 --- !u!54 &6896057170779258588

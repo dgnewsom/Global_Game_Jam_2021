@@ -19,6 +19,7 @@ public class SoulAgent : MonoBehaviour
     private int currentWaypoint;
     private bool isFound = false;
     private GameObject player;
+    private float followDistance;
     
 
     // Start is called before the first frame update
@@ -48,7 +49,9 @@ public class SoulAgent : MonoBehaviour
         else
         {
             soulAgent.destination = player.transform.position;
-            if (distanceToPlayer < player.GetComponent<PlayerStats>().GetLightRadius() -1f){
+            followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius(),3f,10f);
+            print(followDistance);
+            if (distanceToPlayer < followDistance){
                 soulAgent.speed = 0f;
             }
             else
