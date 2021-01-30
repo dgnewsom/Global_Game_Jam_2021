@@ -1216,16 +1216,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMain
       objectReference: {fileID: 0}
-    - target: {fileID: 6359905725118943081, guid: bb630ee2ea582414a929ffbb7e3ba3a3,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359905725118943081, guid: bb630ee2ea582414a929ffbb7e3ba3a3,
-        type: 3}
-      propertyPath: moveForce
-      value: 5000
-      objectReference: {fileID: 0}
     - target: {fileID: 6359905725118943085, guid: bb630ee2ea582414a929ffbb7e3ba3a3,
         type: 3}
       propertyPath: m_RootOrder
