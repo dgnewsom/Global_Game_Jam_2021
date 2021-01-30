@@ -21,6 +21,9 @@ public class Bonfire : MonoBehaviour
     private bool atBonfire;
     private bool activated;
 
+    [Header("Fire Effect")]
+    [SerializeField] GameObject Flame;
+
     private void Awake()
     {
         bonfireSouls = new Stack<GameObject>();

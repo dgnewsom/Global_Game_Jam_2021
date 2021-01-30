@@ -18,8 +18,14 @@ public class PlayerLightHandlerScript : MonoBehaviour
     [SerializeField] VisualEffect flameEffect;
     [SerializeField] Transform core;
     [SerializeField] float coreMultiplier;
+    float initialSize;
     [Header("LightRing")]
     [SerializeField] VisualEffect ringEffect;
+
+    private void Awake()
+    {
+        initialSize = flameEffect.GetFloat("Size");
+    }
 
     private void FixedUpdate()
     {
@@ -35,7 +41,7 @@ public class PlayerLightHandlerScript : MonoBehaviour
     {
         playerLight.range = detectionRange*1.1f;
         playerLight.intensity = Mathf.Clamp(detectionRange * intensityModifier,0,intensityClamp);
-        flameEffect.SetFloat("Size", 1 + (detectionRange * coreMultiplier));
+        flameEffect.SetFloat("Size", initialSize + (detectionRange * coreMultiplier));
         ringEffect.SetFloat("SizeRange", detectionRange);
         //flameEffect.SetFloat("SizeRange", detectionRange);
     }
