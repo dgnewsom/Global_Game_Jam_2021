@@ -7,6 +7,7 @@ public class PmRB : MonoBehaviour
 {
     [SerializeField]Rigidbody rb;
     [SerializeField]float moveSpeed;
+    [SerializeField] Bonfire bonfireScript;
 
 
     private void Start()
@@ -19,5 +20,14 @@ public class PmRB : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
             rb.velocity = new Vector3(context.ReadValue<Vector2>().x * moveSpeed,0, context.ReadValue<Vector2>().y *moveSpeed);
+    }
+
+    public void Deposit(InputAction.CallbackContext context) {
+        bonfireScript.OnDeposit(context);
+    }
+
+    public void Withdraw(InputAction.CallbackContext context)
+    {
+        bonfireScript.OnWithdraw(context);
     }
 }
