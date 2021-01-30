@@ -1441,7 +1441,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 22
           m_Value: {fileID: 2800000, guid: ff82b7901fe315246acb49e56961db75, type: 3}
         - m_ExpressionIndex: 32
-          m_Value: {fileID: -8175945838122044379, guid: 306ae0e29af90c34b9b03b24dc3070f7,
+          m_Value: {fileID: -8175945838122044379, guid: 515f235399af25c4a985ec3e50d2f0a5,
             type: 3}
       m_Bool:
         m_Array: []
@@ -2820,7 +2820,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":-8175945838122044379,"guid":"306ae0e29af90c34b9b03b24dc3070f7","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":-8175945838122044379,"guid":"515f235399af25c4a985ec3e50d2f0a5","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
