@@ -541,7 +541,11 @@ MonoBehaviour:
   detectionRange: 0
   materials: []
   playerLight: {fileID: 730031704548681991}
+  intensityModifier: 0.4
+  intensityClamp: 3
   flameEffect: {fileID: 730031704353863246}
+  core: {fileID: 730031704852779683}
+  coreMultiplier: 0.5
   ringEffect: {fileID: 181281212}
 --- !u!1 &2145364166316825894
 GameObject:
