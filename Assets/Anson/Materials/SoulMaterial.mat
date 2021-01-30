@@ -31,7 +31,7 @@ Material:
     - _DeadZone: 3
     - _Distance: 3
     - _HardLockActive: 0
-    - _IsFound: 0
+    - _IsFound: 1
     m_Colors:
     - Color_F0FB4436: {r: 1.2674555, g: 2.828427, b: 2.573673, a: 1}
     - Color_F9EAC4CD: {r: 1.4862194, g: 5.1497912, b: 5.3403134, a: 1}
