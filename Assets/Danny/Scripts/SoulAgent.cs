@@ -11,12 +11,15 @@ public class SoulAgent : MonoBehaviour
     private float speed = 1f;
     [SerializeField]
     private Transform waypointsToFollow;
+    [SerializeField]
+    private SoulModelHandlerScript handler;
     private Transform[] waypoints;
     private NavMeshAgent soulAgent;
     private Transform target;
     private int currentWaypoint;
     private bool isFound = false;
     private GameObject player;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +33,12 @@ public class SoulAgent : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        handler.SetFound(isFound, player.GetComponent<PlayerStats>().GetLightRadius(), distanceToPlayer);
+
         if (!isFound)
         {
+            
             //if next point reached
             if (Vector3.Distance(transform.position, target.position) <= 0.2f)
             {
@@ -41,7 +48,7 @@ public class SoulAgent : MonoBehaviour
         else
         {
             soulAgent.destination = player.transform.position;
-            if (Vector3.Distance(transform.position, player.transform.position) < player.GetComponent<PlayerStats>().GetLightRadius() -1f){
+            if (distanceToPlayer < player.GetComponent<PlayerStats>().GetLightRadius() -1f){
                 soulAgent.speed = 0f;
             }
             else
