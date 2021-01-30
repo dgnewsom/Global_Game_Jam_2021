@@ -27,8 +27,12 @@ public class SoulDetector : MonoBehaviour
         print(collider.ToString());
         if(collider.gameObject.tag == "Soul")
         {
-            collider.gameObject.GetComponent<SoulAgent>().SetFound(this.gameObject);
+            collider.gameObject.GetComponent<SoulAgent>().SetFound();
             playerStats.addSoul(collider.gameObject);
+        }
+        if(collider.gameObject.tag == "Enemy")
+        {
+            collider.gameObject.GetComponent<EnemyAgent>().SetCharging();
         }
     }
 }
