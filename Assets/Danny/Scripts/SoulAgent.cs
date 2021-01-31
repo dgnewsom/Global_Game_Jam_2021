@@ -62,6 +62,7 @@ public class SoulAgent : MonoBehaviour
 
         if (!isFound || isAtBonfire)
         {
+            handler.SetHardlock(isAtBonfire);
             soulAgent.speed = speed;
             //if next point reached
             if (Vector3.Distance(transform.position, target.position) <= 0.8f)
@@ -71,13 +72,14 @@ public class SoulAgent : MonoBehaviour
         }
         else
         {
+            handler.SetHardlock(false);
             soulAgent.destination = player.transform.position;
             followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius()*.5f,1f,10f);
             //print(followDistance);
             handler.SetDeadZone(followDistance);
             if (distanceToPlayer < followDistance){
                 soulAgent.speed = 0f;
-                //handler.SetHardlock(true);
+                
             }
             else
             {
