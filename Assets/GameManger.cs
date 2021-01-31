@@ -6,6 +6,7 @@ public class GameManger : MonoBehaviour
 {
     [Header("GameOver UI")]
     [SerializeField] GameObject gameOverUI;
+    bool go = false;
 
     public void Awake()
     {
@@ -15,8 +16,14 @@ public class GameManger : MonoBehaviour
 
     public void GameOver()
     {
+        if (!go)
+        {
+
         print("Game Over");
         gameOverUI.SetActive(true);
+            gameOverUI.GetComponent<GameOverController>().GOPlay();
+            go = true;
+        }
     }
 
 }

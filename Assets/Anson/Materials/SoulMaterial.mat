@@ -25,9 +25,9 @@ Material:
     - HardLockActive: 0
     - Vector1_208E7DC4: 2
     - Vector1_6FA86352: 1
-    - Vector1_AF40E6BD: 0.001
+    - Vector1_AF40E6BD: 0.1
     - _ActiveRange: 5
-    - _AutoOpacity: 0
+    - _AutoOpacity: 0.1
     - _DeadZone: 3
     - _Distance: 3
     - _HardLockActive: 0
