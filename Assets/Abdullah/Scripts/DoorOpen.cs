@@ -6,7 +6,7 @@ public class DoorOpen : MonoBehaviour
     [SerializeField] GameObject door;
     bool doorOpened;
     [SerializeField] float doorHeight;
-    [SerializeField]PlayerStats playerStats;
+    [SerializeField] PlayerStats playerStats;
     [SerializeField] int triggerRequirement;
     [SerializeField] TextMeshProUGUI plateText;
     [SerializeField] GameObject notification;
@@ -15,12 +15,18 @@ public class DoorOpen : MonoBehaviour
     private void Start()
     {
         doorOpened = false;
+        if (playerStats == null)
+        {
+
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+
         plateText.text = "x" + triggerRequirement.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.gameObject.tag.Equals("Player"))
         {
 
@@ -28,7 +34,8 @@ public class DoorOpen : MonoBehaviour
             {
                 LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
                 plateText.text = "x" + (Mathf.Clamp(triggerRequirement - playerStats.SoulsFollowing(), 0, 50)).ToString();
-                if (playerStats.SoulsFollowing() >= triggerRequirement) {
+                if (playerStats.SoulsFollowing() >= triggerRequirement)
+                {
                     door.transform.position += new Vector3(0, -doorHeight, 0);
                     doorOpened = true;
                 }
@@ -42,11 +49,12 @@ public class DoorOpen : MonoBehaviour
                     door.transform.position += new Vector3(0, doorHeight, 0);
                     doorOpened = false;
                 }
-            } 
+            }
         }
     }
 
-    public bool LevelComplete() {
+    public bool LevelComplete()
+    {
         return doorOpened;
     }
 }
