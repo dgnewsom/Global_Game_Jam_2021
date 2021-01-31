@@ -74,7 +74,7 @@ public class SoulAgent : MonoBehaviour
         {
             handler.SetHardlock(false);
             soulAgent.destination = player.transform.position;
-            followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius()*.5f,1f,10f);
+            followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius()*.25f,.2f,3f);
             //print(followDistance);
             handler.SetDeadZone(followDistance);
             if (distanceToPlayer < followDistance){
@@ -157,7 +157,6 @@ public class SoulAgent : MonoBehaviour
 
     void PlaySound_PickUp()
     {
-        print(this + " play found sound");
         pickUpSounds[UnityEngine.Random.Range(0, pickUpSounds.Count)].Play();
     }
 
