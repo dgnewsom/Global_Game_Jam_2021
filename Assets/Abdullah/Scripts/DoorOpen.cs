@@ -34,26 +34,31 @@ public class DoorOpen : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            if (!doorOpened)
-            {
-                LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
-                plateText.text = "x" + (Mathf.Clamp(triggerRequirement - playerStats.SoulsFollowing(), 0, 50)).ToString();
-                if (playerStats.SoulsFollowing() >= triggerRequirement)
+            LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
+            plateText.text = "x" + (Mathf.Clamp(triggerRequirement - playerStats.SoulsFollowing(), 0, 50)).ToString();
+            if (playerStats.SoulsFollowing() >= triggerRequirement)
+                if (!doorOpened)
                 {
-                    door.transform.position += new Vector3(0, -doorHeight, 0);
-                    doorOpened = true;
+
+                    {
+                        door.transform.position += new Vector3(0, -doorHeight, 0);
+                        doorOpened = true;
+                    }
                 }
-            }
-            else
-            {
-                if (playerStats.SoulsFollowing() >= triggerRequirement)
+                else
                 {
-                    door.transform.position += new Vector3(0, doorHeight, 0);
-                    doorOpened = false;
-                    LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+                    /*
+                    LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+
                     plateText.text = "x" + triggerRequirement.ToString();
-                }
-            }
+        */
+                    if (playerStats.SoulsFollowing() >= triggerRequirement)
+                    {
+                        door.transform.position += new Vector3(0, doorHeight, 0);
+                        doorOpened = false;
+
+                    }
+                }
         }
     }
 
