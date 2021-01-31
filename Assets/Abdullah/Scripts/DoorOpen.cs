@@ -34,38 +34,39 @@ public class DoorOpen : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
+        plateText.text = playerStats.SoulsFollowing().ToString() + "/" + triggerRequirement.ToString();
         if (other.gameObject.tag.Equals("Player"))
-        {
-            LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
-            plateText.text = playerStats.SoulsFollowing().ToString() + "/" + triggerRequirement.ToString();
             if (playerStats.SoulsFollowing() >= triggerRequirement)
             {
-
-                sound_Activate.PlayF();
-                if (!doorOpened)
                 {
 
+                    sound_Activate.PlayF();
+                    if (!doorOpened)
                     {
-                        door.transform.position += new Vector3(0, -doorHeight, 0);
-                        doorOpened = true;
+
+                        {
+                            door.transform.position += new Vector3(0, -doorHeight, 0);
+                            doorOpened = true;
+                        }
+                    }
+                    else
+                    {
+                        /*
+                        LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+
+                        plateText.text = "x" + triggerRequirement.ToString();
+            */
+                        if (playerStats.SoulsFollowing() >= triggerRequirement)
+                        {
+                            door.transform.position += new Vector3(0, doorHeight, 0);
+                            doorOpened = false;
+
+                        }
                     }
                 }
-                else
-                {
-                    /*
-                    LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
 
-                    plateText.text = "x" + triggerRequirement.ToString();
-        */
-                    if (playerStats.SoulsFollowing() >= triggerRequirement)
-                    {
-                        door.transform.position += new Vector3(0, doorHeight, 0);
-                        doorOpened = false;
-
-                    }
-                }
-            }
-        }
+            }
     }
 
     public bool LevelComplete()
