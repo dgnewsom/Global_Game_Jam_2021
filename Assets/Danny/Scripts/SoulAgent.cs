@@ -157,7 +157,6 @@ public class SoulAgent : MonoBehaviour
 
     void PlaySound_PickUp()
     {
-        print(this + " play found sound");
         pickUpSounds[UnityEngine.Random.Range(0, pickUpSounds.Count)].Play();
     }
 

@@ -26,7 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Abdullah/Levels/Level6.unity
     guid: f6b03b75e1c06e94b9cf473c756e72f3
-  - enabled: 1
-    path: Assets/Abdullah/Levels/Level7.unity
-    guid: 5f59a6d6fe1925b4bb92753b3ac4981f
   m_configObjects: {}

@@ -16,9 +16,10 @@ public class PlayerStats : MonoBehaviour
 
     [Space]
     [SerializeField] private int maxSoulsFollowing;
-    
+
     [Space]
     [Header("Light Radius")]
+    public PlayerLightHandlerScript playerLightHandler;
     [SerializeField] private float baseLightRadius;
     [SerializeField] private float maxLightRadius;
     [SerializeField] private float lightTransitionSpeed;
@@ -30,6 +31,8 @@ public class PlayerStats : MonoBehaviour
     private float currentHealth;
     
     private bool isDead;
+
+    public bool IsDead { get => isDead;}
 
     private void Awake()
     {
@@ -75,6 +78,7 @@ public class PlayerStats : MonoBehaviour
         
         isDead = true;
         //add gameover screen
+        FindObjectOfType<GameManger>().GameOver();
     }
 
     // Souls
@@ -94,6 +98,8 @@ public class PlayerStats : MonoBehaviour
     public GameObject RemoveSoul()
     {
         DecreaseLightRadius();
+        playerLightHandler.PlaySound_LoseSoul();
+
         return souls.Pop();
     }
 
