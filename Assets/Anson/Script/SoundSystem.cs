@@ -8,10 +8,18 @@ public class SoundSystem : MonoBehaviour
     [SerializeField] List<Sound> sounds = new List<Sound>();
     [SerializeField] List<Sound> soundsCache = new List<Sound>();
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] Sound bgm;
 
     private void Start()
     {
         UpdateSounds();
+        if (bgm != null)
+        {
+            if (!bgm.IsPlaying())
+            {
+                bgm.Play();
+            }
+        }
     }
 
 
@@ -40,7 +48,7 @@ public class SoundSystem : MonoBehaviour
     public void PauseAllSounds()
     {
         soundsCache = new List<Sound>();
-        foreach(Sound s in sounds)
+        foreach (Sound s in sounds)
         {
             if (s.IsPlaying())
             {
@@ -52,7 +60,7 @@ public class SoundSystem : MonoBehaviour
 
     public void ResumeSounds()
     {
-        foreach(Sound s in soundsCache)
+        foreach (Sound s in soundsCache)
         {
             s.Resume();
         }

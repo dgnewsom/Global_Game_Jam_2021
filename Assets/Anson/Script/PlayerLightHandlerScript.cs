@@ -21,6 +21,8 @@ public class PlayerLightHandlerScript : MonoBehaviour
     float initialSize;
     [Header("LightRing")]
     [SerializeField] VisualEffect ringEffect;
+    [Header("Sound")]
+    [SerializeField] List<Sound> loseSounds;
 
     private void Awake()
     {
@@ -47,4 +49,9 @@ public class PlayerLightHandlerScript : MonoBehaviour
     }
 
     public float DetectionRange { get => detectionRange; set => detectionRange = value; }
+
+    public void PlaySound_LoseSoul()
+    {
+        loseSounds[Random.Range(0, loseSounds.Count)].PlayF();
+    }
 }

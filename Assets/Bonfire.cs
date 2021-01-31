@@ -25,6 +25,12 @@ public class Bonfire : MonoBehaviour
     [Header("Fire Effect")]
     [SerializeField] GameObject Flame;
 
+    [Header("Sound")]
+    [SerializeField] Sound sound_ambient;
+    [SerializeField] Sound sound_Deposit;
+    [SerializeField] Sound sound_Withdraw;
+
+
     public Stack<GameObject> BonfireSouls { get => bonfireSouls; set => bonfireSouls = value; }
 
     private void Awake()
@@ -90,6 +96,8 @@ public class Bonfire : MonoBehaviour
             if (bonfireSouls.Count== 0)
             {
                 Flame.SetActive(true);
+                sound_ambient.Play();
+
             }
             GameObject soulToAdd = playerStats.RemoveSoul();
             soulToAdd.GetComponent<SoulAgent>().SetWaypoints(bonfireWaypoints);
@@ -97,6 +105,7 @@ public class Bonfire : MonoBehaviour
             bonfireSouls.Push(soulToAdd);
             currentSouls++;
             checkSouls();
+            sound_Deposit.PlayF();
         }
     }
 
@@ -109,9 +118,13 @@ public class Bonfire : MonoBehaviour
             playerStats.AddSoul(soulToGet);
             currentSouls--;
             checkSouls();
+            sound_Withdraw.PlayF();
+
             if (bonfireSouls.Count == 0)
             {
                 Flame.SetActive(false);
+                sound_ambient.Stop();
+
             }
         }
     }

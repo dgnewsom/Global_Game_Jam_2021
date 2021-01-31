@@ -12,6 +12,8 @@ public class DoorOpen : MonoBehaviour
     [SerializeField] GameObject notification;
     [SerializeField] LeanTweenType easeType;
 
+    [SerializeField] Sound sound_Activate;
+
     private void Start()
     {
         doorOpened = false;
@@ -37,6 +39,7 @@ public class DoorOpen : MonoBehaviour
             LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
             plateText.text = "x" + (Mathf.Clamp(triggerRequirement, 0, 50)).ToString();
             if (playerStats.SoulsFollowing() >= triggerRequirement)
+                sound_Activate.PlayF();
                 if (!doorOpened)
                 {
 

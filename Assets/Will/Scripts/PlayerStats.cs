@@ -16,9 +16,10 @@ public class PlayerStats : MonoBehaviour
 
     [Space]
     [SerializeField] private int maxSoulsFollowing;
-    
+
     [Space]
     [Header("Light Radius")]
+    public PlayerLightHandlerScript playerLightHandler;
     [SerializeField] private float baseLightRadius;
     [SerializeField] private float maxLightRadius;
     [SerializeField] private float lightTransitionSpeed;
@@ -94,6 +95,8 @@ public class PlayerStats : MonoBehaviour
     public GameObject RemoveSoul()
     {
         DecreaseLightRadius();
+        playerLightHandler.PlaySound_LoseSoul();
+
         return souls.Pop();
     }
 
