@@ -7,34 +7,40 @@ public class DoorOpen : MonoBehaviour
     bool doorOpened;
     [SerializeField] float doorHeight;
     [SerializeField] PlayerStats playerStats;
-    [SerializeField] int triggerRequirement;
+    [SerializeField] int triggerRequirement;
     [SerializeField] TextMeshProUGUI plateText;
-    [SerializeField] GameObject notification;
+    [SerializeField] GameObject notification;
     [SerializeField] LeanTweenType easeType;
 
     private void Start()
     {
         doorOpened = false;
-        if (playerStats == null)
-        {
-
+        if (playerStats == null)
+        {
+
             playerStats = FindObjectOfType<PlayerStats>();
         }
 
         plateText.text = "x" + triggerRequirement.ToString();
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag.Equals("Player"))
         {
-
             if (!doorOpened)
             {
-                LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
+                LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
                 plateText.text = "x" + (Mathf.Clamp(triggerRequirement - playerStats.SoulsFollowing(), 0, 50)).ToString();
-                if (playerStats.SoulsFollowing() >= triggerRequirement)
+                if (playerStats.SoulsFollowing() >= triggerRequirement)
                 {
                     door.transform.position += new Vector3(0, -doorHeight, 0);
                     doorOpened = true;
@@ -42,18 +48,18 @@ public class DoorOpen : MonoBehaviour
             }
             else
             {
-                LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
-                plateText.text = "x" + triggerRequirement.ToString();
                 if (playerStats.SoulsFollowing() >= triggerRequirement)
                 {
                     door.transform.position += new Vector3(0, doorHeight, 0);
-                    doorOpened = false;
+                    doorOpened = false;
+                    LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+                    plateText.text = "x" + triggerRequirement.ToString();
                 }
-            }
+            }
         }
     }
 
-    public bool LevelComplete()
+    public bool LevelComplete()
     {
         return doorOpened;
     }
