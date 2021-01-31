@@ -31,7 +31,8 @@ public class EnemyAgent : MonoBehaviour
     bool isAttacking = false;
     private Vector3 attackTarget;
     private bool isDead;
-    
+    [SerializeField] float delayBetweenSpawn = 1.5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class EnemyAgent : MonoBehaviour
         isDead = false;
         currentCharge = 0f;
         handler.UpdateCharge(0f);
+        handler.PlayAnim_Reset();
     }
 
     // Update is called once per frame
@@ -62,7 +64,7 @@ public class EnemyAgent : MonoBehaviour
             if (isAttacking)
             {
                 handler.UpdateCharge(1f);
-                if(Vector3.Distance(attackTarget, transform.position) <= 1f)
+                if (Vector3.Distance(attackTarget, transform.position) <= 1f)
                 {
                     Death();
                 }
@@ -74,7 +76,7 @@ public class EnemyAgent : MonoBehaviour
                 {
                     enemyAgent.speed = speed;
                 }
-            
+
                 if (Vector3.Distance(transform.position, target) <= 0.2f)
                 {
                     GetNextWaypoint();
@@ -98,18 +100,21 @@ public class EnemyAgent : MonoBehaviour
 
     public void Death()
     {
+        if (!isDead)
+        {
+            StartCoroutine(DelaySpawnNewEnemy());
+            isAttacking = false;
+            enemyAgent.speed = 0;
+            handler.PlayAnim_Death();
+            GameObject.Destroy(this.gameObject, 2.1f);
+        }
         isDead = true;
-        GameObject reSpawn = GameObject.Instantiate(prefabForRespawn,initialPosition,Quaternion.identity,this.transform.parent);
-        reSpawn.GetComponent<EnemyAgent>().ResetEnemy();
-        isAttacking = false;
-        enemyAgent.speed = 0;
-        handler.PlayAnim_Death();
-        GameObject.Destroy(this.gameObject,2.1f);
     }
 
-    
+
     private void AttackPlayer()
     {
+        handler.PlaySound_Attack();
         isCharging = false;
         isAttacking = true;
         currentCharge = 0f;
@@ -117,12 +122,12 @@ public class EnemyAgent : MonoBehaviour
         enemyAgent.speed = attackSpeed;
         Vector3 direction = player.transform.position - transform.position;
 
-        Vector3 moveDir = (new Vector3(direction.x,0f,direction.z)).normalized * attackDistance;
+        Vector3 moveDir = (new Vector3(direction.x, 0f, direction.z)).normalized * attackDistance;
         //Debug.DrawRay(transform.position, moveDir ,Color.red,20f);
         attackTarget = transform.position + moveDir;
         target = attackTarget;
         enemyAgent.SetDestination(target);
-        
+
     }
 
     public void SetWaypoints()
@@ -149,8 +154,9 @@ public class EnemyAgent : MonoBehaviour
         if (!isAttacking)
         {
             isCharging = true;
+            handler.PlaySound_Charge();
         }
-        
+
     }
 
     //Get next waypoint and reset to first if last waypoint reached.
@@ -183,5 +189,12 @@ public class EnemyAgent : MonoBehaviour
                 playerStats.Die();
             }
         }
+    }
+
+    IEnumerator DelaySpawnNewEnemy()
+    {
+        yield return new WaitForSeconds(delayBetweenSpawn);
+        GameObject reSpawn = Instantiate(prefabForRespawn, initialPosition, Quaternion.identity, this.transform.parent);
+        reSpawn.GetComponent<EnemyAgent>().ResetEnemy();
     }
 }

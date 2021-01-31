@@ -15,6 +15,10 @@ public class EnemyModelHandler : MonoBehaviour
     [SerializeField] VisualEffect shardEffect;
     [Header("Animator")]
     [SerializeField] Animator animator;
+    [Header("Sound")]
+    [SerializeField] Sound Sound_Ambient;
+    [SerializeField] Sound Sound_Charge;
+    [SerializeField] Sound Sound_Attack;
 
 
     private void Awake()
@@ -24,6 +28,7 @@ public class EnemyModelHandler : MonoBehaviour
             coreMaterial = coreMesh.material;
         }
         animator = GetComponent<Animator>();
+        Sound_Ambient.Play();
     }
 
     private void FixedUpdate()
@@ -49,5 +54,20 @@ public class EnemyModelHandler : MonoBehaviour
     public void PlayAnim_Death()
     {
         animator.SetTrigger("Die");
+    }
+
+    public void PlayAnim_Reset()
+    {
+        animator.SetTrigger("Reset");
+    }
+    public void PlaySound_Charge()
+    {
+        print("Play charge");
+        Sound_Charge.Play();
+    }
+
+    public void PlaySound_Attack()
+    {
+        Sound_Attack.Play();
     }
 }
