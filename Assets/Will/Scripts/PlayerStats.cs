@@ -15,7 +15,6 @@ public class PlayerStats : MonoBehaviour
     private float cameraZoomIncrement;
 
     [Space]
-    //public float health;                // starting health
     [SerializeField] private int maxSoulsFollowing;
     
     [Space]
@@ -28,16 +27,12 @@ public class PlayerStats : MonoBehaviour
     private float lightRadiusIncrement;
 
     private Stack<GameObject> souls;        // current following souls
-    //private float currentMaxHealth;
-    //private float currentHealth;
+    private float currentHealth;
     
     private bool isDead;
 
     private void Awake()
     {
-        print(playerCamera.orthographicSize);
-        //currentMaxHealth = health;
-        //currentHealth = currentMaxHealth;
         currentLightRadius = baseLightRadius;
         targetLightRadius = baseLightRadius;
         souls = new Stack<GameObject>();

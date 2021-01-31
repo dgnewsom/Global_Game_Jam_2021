@@ -18,6 +18,7 @@ public class SoulAgent : MonoBehaviour
     private Transform target;
     private int currentWaypoint;
     private bool isFound = false;
+    private bool isAtBonfire = false;
     private bool foundDelayFlag = false;
     private float foundDelay = 0.2f;
     private GameObject player;
@@ -34,7 +35,7 @@ public class SoulAgent : MonoBehaviour
         initialPosition = this.transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
         soulAgent = GetComponent<NavMeshAgent>();
-        SetWaypoints();
+        SetWaypoints(waypointsToFollow);
         ResetSoul();
     }
 
@@ -48,6 +49,7 @@ public class SoulAgent : MonoBehaviour
         transform.position = initialPosition;
         soulAgent.speed = speed;
         isFound = false;
+        isAtBonfire = false;
         handler.SetHardlock(false);
         StartCoroutine(DelayFound());
     }
@@ -58,10 +60,11 @@ public class SoulAgent : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         handler.SetFound(isFound, player.GetComponent<PlayerStats>().GetLightRadius(), distanceToPlayer);
 
-        if (!isFound)
+        if (!isFound || isAtBonfire)
         {
+            soulAgent.speed = speed;
             //if next point reached
-            if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+            if (Vector3.Distance(transform.position, target.position) <= 0.8f)
             {
                 GetNextWaypoint();
             }
@@ -84,14 +87,14 @@ public class SoulAgent : MonoBehaviour
         
     }
 
-    public void SetWaypoints()
+    public void SetWaypoints(Transform pointsToFollow)
     {
         try
         {
-            waypoints = new Transform[waypointsToFollow.childCount];
+            waypoints = new Transform[pointsToFollow.childCount];
             for (int i = 0; i < waypoints.Length; i++)
             {
-                waypoints[i] = waypointsToFollow.GetChild(i);
+                waypoints[i] = pointsToFollow.GetChild(i);
             }
             target = waypoints[0];
         }
@@ -101,6 +104,11 @@ public class SoulAgent : MonoBehaviour
         }
         if (target != null)
             soulAgent.destination = target.position;
+    }
+
+    public void SetIsAtBonfire(bool setIsAtBonfire)
+    {
+        isAtBonfire = setIsAtBonfire;
     }
 
     public void SetFound(bool setIsFound)
@@ -122,6 +130,11 @@ public class SoulAgent : MonoBehaviour
         {
             ResetSoul();
         }
+    }
+
+    internal void ResetWaypoints()
+    {
+        SetWaypoints(waypointsToFollow);
     }
 
     //Get next waypoint and reset to first if last waypoint reached.
