@@ -42,7 +42,11 @@ public class Sound : MonoBehaviour
     }
     public void Play()
     {
+        if (!source.isPlaying)
+        {
         source.Play();
+
+        }
     }
     public void Stop()
     {
