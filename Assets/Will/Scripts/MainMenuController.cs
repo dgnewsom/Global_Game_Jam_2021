@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
     public CanvasGroup startBtn;
     public CanvasGroup quitBtn;
     public CanvasGroup fade;
+    public CanvasGroup levelSelection;
 
     public Sound music;
     public Sound SFX;
@@ -30,6 +31,55 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(menuAnim());
         LeanTween.alphaCanvas(fade, 0, 1).setEase(easeType);
         SFX.Play();
+    }
+
+    public void loadLvl1()
+    {
+        StartCoroutine(loadLevel(1));
+    }
+    public void loadLvl2()
+    {
+        StartCoroutine(loadLevel(2));
+    }
+    public void loadLvl3()
+    {
+        StartCoroutine(loadLevel(3));
+    }
+    public void loadLvl4()
+    {
+        StartCoroutine(loadLevel(4));
+    }
+    public void loadLvl5()
+    {
+        StartCoroutine(loadLevel(5));
+    }
+    public void loadLvl6()
+    {
+        StartCoroutine(loadLevel(6));
+    }
+    public void loadLvl7()
+    {
+        StartCoroutine(loadLevel(7));
+    }
+    public void loadLvl8()
+    {
+        StartCoroutine(loadLevel(8));
+    }
+    public void loadLvl9()
+    {
+        StartCoroutine(loadLevel(9));
+    }
+    public void loadLvl10()
+    {
+        StartCoroutine(loadLevel(10));
+    }
+
+    private IEnumerator loadLevel(int levelIndex)
+    {
+        btn.Play();
+        LeanTween.alphaCanvas(levelSelection, 0, 1).setEase(easeType);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(levelIndex);
     }
 
     public void exitMenuAnim()
@@ -51,7 +101,7 @@ public class MainMenuController : MonoBehaviour
             musicVol.volume -= Time.deltaTime/1.5f;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        SceneManager.LoadScene(1);
+        LeanTween.alphaCanvas(levelSelection, 1, 1.5f).setEase(easeType);
     }
 
     public void quitGame()
@@ -72,7 +122,7 @@ public class MainMenuController : MonoBehaviour
         LeanTween.alphaCanvas(quitBtn, 0, 1).setEase(easeType);
         yield return new WaitForSeconds(0.25f);
         LeanTween.alphaCanvas(fade, 1, 1).setEase(easeType);
-        
+        levelSelection.interactable = true;
     }
 
     IEnumerator menuAnim()
