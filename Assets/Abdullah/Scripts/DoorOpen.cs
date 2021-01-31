@@ -9,7 +9,7 @@ public class DoorOpen : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
     [SerializeField] int triggerRequirement;
     [SerializeField] TextMeshProUGUI plateText;
-    [SerializeField] GameObject notification;
+    [SerializeField] GameObject notification;
     [SerializeField] LeanTweenType easeType;
 
     [SerializeField] Sound sound_Activate;
@@ -24,12 +24,12 @@ public class DoorOpen : MonoBehaviour
         plateText.text = "x" + triggerRequirement.ToString();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other)
+    {
         if (other.gameObject.tag.Equals("Player"))
-        {
-            LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
-        }
+        {
+            LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
