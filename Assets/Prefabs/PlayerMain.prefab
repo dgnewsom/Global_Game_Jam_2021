@@ -232,6 +232,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c76f9bda-a365-4bfe-8222-7455fef6563b
     m_ActionName: Player/Withdraw[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6359905725118943081}
+        m_MethodName: BackToMainMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8c568e87-1b34-4283-8110-2458062ddbdd
+    m_ActionName: Player/ToMainMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -314,6 +329,7 @@ MonoBehaviour:
   bonfireScript: {fileID: 0}
   moveDir: {x: 0, y: 0, z: 0}
   isMoving: 0
+  playerStats: {fileID: 0}
 --- !u!136 &6359905725118943083
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -344,9 +360,11 @@ MonoBehaviour:
   cameraRange: 10
   cameraTransitionSpeed: 5
   maxSoulsFollowing: 30
+  playerLightHandler: {fileID: 0}
   baseLightRadius: 2
   maxLightRadius: 20
   lightTransitionSpeed: 5
+  currentLightRadius: 0
 --- !u!81 &6442384946436143557
 AudioListener:
   m_ObjectHideFlags: 0

@@ -41,6 +41,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToMainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c568e87-1b34-4283-8110-2458062ddbdd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -208,6 +216,28 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Withdraw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb4d0af4-3655-4119-8ea7-f1875666f1fd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20291406-011a-427f-9338-a2738a5e00b5"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,6 +249,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Deposit = m_Player.FindAction("Deposit", throwIfNotFound: true);
         m_Player_Withdraw = m_Player.FindAction("Withdraw", throwIfNotFound: true);
+        m_Player_ToMainMenu = m_Player.FindAction("ToMainMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +302,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Deposit;
     private readonly InputAction m_Player_Withdraw;
+    private readonly InputAction m_Player_ToMainMenu;
     public struct PlayerActions
     {
         private @PlayerControlls m_Wrapper;
@@ -278,6 +310,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Deposit => m_Wrapper.m_Player_Deposit;
         public InputAction @Withdraw => m_Wrapper.m_Player_Withdraw;
+        public InputAction @ToMainMenu => m_Wrapper.m_Player_ToMainMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -296,6 +329,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Withdraw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWithdraw;
                 @Withdraw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWithdraw;
                 @Withdraw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWithdraw;
+                @ToMainMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToMainMenu;
+                @ToMainMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToMainMenu;
+                @ToMainMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToMainMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -309,6 +345,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Withdraw.started += instance.OnWithdraw;
                 @Withdraw.performed += instance.OnWithdraw;
                 @Withdraw.canceled += instance.OnWithdraw;
+                @ToMainMenu.started += instance.OnToMainMenu;
+                @ToMainMenu.performed += instance.OnToMainMenu;
+                @ToMainMenu.canceled += instance.OnToMainMenu;
             }
         }
     }
@@ -318,5 +357,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnDeposit(InputAction.CallbackContext context);
         void OnWithdraw(InputAction.CallbackContext context);
+        void OnToMainMenu(InputAction.CallbackContext context);
     }
 }

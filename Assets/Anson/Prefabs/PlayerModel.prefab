@@ -552,7 +552,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: c8b46cfe74f96544fb3474ae69d5f802, type: 3}
+      objectReference: {fileID: 8300000, guid: ba5f6e5c2b403af46aa39c9640cb2009, type: 3}
     - target: {fileID: 6622000331738406825, guid: cf67a759ee0cfa44a8ab3f4a6f5cc64f,
         type: 3}
       propertyPath: Pan2D
@@ -654,7 +654,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ba5f6e5c2b403af46aa39c9640cb2009, type: 3}
+      objectReference: {fileID: 8300000, guid: a3d2882b5ef740d47a446382fbb1fd5d, type: 3}
     - target: {fileID: 6622000331738406825, guid: cf67a759ee0cfa44a8ab3f4a6f5cc64f,
         type: 3}
       propertyPath: Pan2D

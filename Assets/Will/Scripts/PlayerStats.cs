@@ -32,6 +32,8 @@ public class PlayerStats : MonoBehaviour
     
     private bool isDead;
 
+    public bool IsDead { get => isDead;}
+
     private void Awake()
     {
         currentLightRadius = baseLightRadius;
@@ -76,6 +78,7 @@ public class PlayerStats : MonoBehaviour
         
         isDead = true;
         //add gameover screen
+        FindObjectOfType<GameManger>().GameOver();
     }
 
     // Souls
