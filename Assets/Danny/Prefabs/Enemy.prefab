@@ -85,13 +85,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8842fed39511b4085ca84d088e41c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   waypointsToFollow: {fileID: 0}
-  chargeDelay: 2
+  chargeDelay: 4
   attackSpeed: 20
-  attackDistance: 10
+  attackDistance: 15
   prefabForRespawn: {fileID: 2317186748922463384}
   handler: {fileID: 8122695226287256186}
+  delayBetweenSpawn: 1.5
 --- !u!135 &1162431074174105926
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -65,21 +65,27 @@ public class Bonfire : MonoBehaviour
         }
     }
 
-    private void checkSouls()
+    public bool checkSouls()
     {
         if (requiredSouls != 0)
-            notifText.text = "x" + (requiredSouls - currentSouls).ToString();
+            notifText.text = "x" + currentSouls.ToString()+ "/"+requiredSouls;
         else
             LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
-        if (currentSouls == requiredSouls)
+        if (currentSouls >= requiredSouls)
+        {
             torch.lightUp();
-        else if (currentSouls < requiredSouls)
+            return true;
+        }
+        else
+        {
             torch.putOut();
+            return false;
+        }
     }
 
     public void OnDeposit(InputAction.CallbackContext context) 
     {
-        print("PlayerClick");
+        //print("PlayerClick");
         if (playerStats.SoulsFollowing() > 0 && atBonfire && context.performed) {
             if (bonfireSouls.Count== 0)
             {

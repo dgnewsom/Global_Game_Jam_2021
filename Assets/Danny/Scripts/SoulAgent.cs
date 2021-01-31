@@ -77,7 +77,7 @@ public class SoulAgent : MonoBehaviour
             handler.SetDeadZone(followDistance);
             if (distanceToPlayer < followDistance){
                 soulAgent.speed = 0f;
-                handler.SetHardlock(true);
+                //handler.SetHardlock(true);
             }
             else
             {
