@@ -12,7 +12,9 @@ public class EnemyModelHandler : MonoBehaviour
     [SerializeField] MeshRenderer coreMesh;
     [SerializeField] Material coreMaterial;
     [Header("Floor")]
-    [SerializeField] VisualEffect shardEffect; 
+    [SerializeField] VisualEffect shardEffect;
+    [Header("Animator")]
+    [SerializeField] Animator animator;
 
 
     private void Awake()
@@ -21,6 +23,7 @@ public class EnemyModelHandler : MonoBehaviour
         {
             coreMaterial = coreMesh.material;
         }
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -42,5 +45,9 @@ public class EnemyModelHandler : MonoBehaviour
         coreMaterial.SetFloat("_LerpBetweenState", charge);
         shardEffect.SetFloat("MainOpacity", opacityCurve.Evaluate(charge));
 
+    }
+    public void PlayAnim_Death()
+    {
+        animator.SetTrigger("Die");
     }
 }

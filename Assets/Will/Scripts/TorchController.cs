@@ -18,7 +18,7 @@ public class TorchController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "enemy") // can be exchanged for the layer system
+        if (other.tag == "Enemy") // can be exchanged for the layer system
         {
             killEnemy(other.gameObject);
         }
@@ -26,7 +26,13 @@ public class TorchController : MonoBehaviour
 
     public void killEnemy(GameObject enemy)
     {
-        Destroy(enemy);
+        if (enemy.TryGetComponent(out EnemyAgent e)){
+            e.Death();
+        }
+        else
+        {
+            Destroy(e);
+        }
     }
 
     public void lightUp()
