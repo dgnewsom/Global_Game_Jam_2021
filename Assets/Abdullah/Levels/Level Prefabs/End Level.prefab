@@ -44,7 +44,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 5
+  m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -260,7 +260,7 @@ VisualEffect:
       - m_Value: {x: 5.886792, y: 5.886792, z: 5.886792, w: 1}
         m_Name: Colour2
         m_Overridden: 1
-      - m_Value: {x: 24.150944, y: 24.150944, z: 24.150944, w: 1}
+      - m_Value: {x: 6.037737, y: 6.037737, z: 6.037737, w: 1}
         m_Name: Coulour1
         m_Overridden: 1
     m_Uint:
