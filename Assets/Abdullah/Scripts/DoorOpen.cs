@@ -16,9 +16,7 @@ public class DoorOpen : MonoBehaviour
     {
         doorOpened = false;
         if (playerStats == null)
-        {
-
-            playerStats = FindObjectOfType<PlayerStats>();
+        {            playerStats = FindObjectOfType<PlayerStats>();
         }
 
         plateText.text = "x" + triggerRequirement.ToString();
