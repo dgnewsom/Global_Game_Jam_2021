@@ -16,6 +16,7 @@ public class Bonfire : MonoBehaviour
     [SerializeField] LeanTweenType easeType;
     [SerializeField] TextMeshProUGUI notifText;
     [SerializeField] CanvasGroup mouseGroup;
+    [SerializeField] Transform bonfireWaypoints;
 
     private int currentSouls;
     private bool atBonfire;
@@ -84,7 +85,10 @@ public class Bonfire : MonoBehaviour
             {
                 Flame.SetActive(true);
             }
-            bonfireSouls.Push(playerStats.RemoveSoul());
+            GameObject soulToAdd = playerStats.RemoveSoul();
+            soulToAdd.GetComponent<SoulAgent>().SetWaypoints(bonfireWaypoints);
+            soulToAdd.GetComponent<SoulAgent>().SetIsAtBonfire(true);
+            bonfireSouls.Push(soulToAdd);
             currentSouls++;
             checkSouls();
         }
@@ -93,7 +97,10 @@ public class Bonfire : MonoBehaviour
     public void OnWithdraw(InputAction.CallbackContext context) {
         if (currentSouls > 0 && atBonfire && context.performed)
         {
-            playerStats.AddSoul(bonfireSouls.Pop());
+            GameObject soulToGet = bonfireSouls.Pop();
+            soulToGet.GetComponent<SoulAgent>().ResetWaypoints();
+            soulToGet.GetComponent<SoulAgent>().SetIsAtBonfire(false);
+            playerStats.AddSoul(soulToGet);
             currentSouls--;
             checkSouls();
             if (bonfireSouls.Count == 0)
