@@ -21,7 +21,7 @@ public class DoorOpen : MonoBehaviour
         {            playerStats = FindObjectOfType<PlayerStats>();
         }
 
-        plateText.text = "x" + triggerRequirement.ToString();
+        plateText.text = playerStats.SoulsFollowing().ToString()+"/"+ triggerRequirement.ToString();
     }
 
     private void OnTriggerExit(Collider other)
@@ -37,7 +37,7 @@ public class DoorOpen : MonoBehaviour
         if (other.gameObject.tag.Equals("Player"))
         {
             LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
-            plateText.text = "x" + (Mathf.Clamp(triggerRequirement, 0, 50)).ToString();
+            plateText.text = playerStats.SoulsFollowing().ToString() + "/" + triggerRequirement.ToString();
             if (playerStats.SoulsFollowing() >= triggerRequirement)
                 sound_Activate.PlayF();
                 if (!doorOpened)
