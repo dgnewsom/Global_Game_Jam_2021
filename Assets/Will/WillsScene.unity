@@ -158,6 +158,7 @@ MonoBehaviour:
   cameraRange: 0
   cameraTransitionSpeed: 0
   maxSoulsFollowing: 15
+  playerLightHandler: {fileID: 0}
   baseLightRadius: 5
   maxLightRadius: 0
   lightTransitionSpeed: 0
@@ -2478,7 +2479,7 @@ PrefabInstance:
     - target: {fileID: 8510722325921884279, guid: 064a4c9d2e0df154e9b8c6843e4bf2ff,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064a4c9d2e0df154e9b8c6843e4bf2ff, type: 3}
