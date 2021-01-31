@@ -18,12 +18,18 @@ public class DoorOpen : MonoBehaviour
         plateText.text = "x" + triggerRequirement.ToString();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        
         if (other.gameObject.tag.Equals("Player"))
         {
+            LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
             if (!doorOpened)
             {
                 LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
@@ -35,12 +41,12 @@ public class DoorOpen : MonoBehaviour
             }
             else
             {
-                LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
-                plateText.text = "x" + triggerRequirement.ToString();
                 if (playerStats.SoulsFollowing() >= triggerRequirement)
                 {
                     door.transform.position += new Vector3(0, doorHeight, 0);
                     doorOpened = false;
+                    LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+                    plateText.text = "x" + triggerRequirement.ToString();
                 }
             } 
         }
