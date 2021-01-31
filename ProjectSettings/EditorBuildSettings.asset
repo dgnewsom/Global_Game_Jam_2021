@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Abdullah/Levels/Level6.unity
     guid: f6b03b75e1c06e94b9cf473c756e72f3
+  - enabled: 1
+    path: Assets/Will/EndingCutscene.unity
+    guid: db18c824498391b42ac901844c6fd65d
   m_configObjects: {}

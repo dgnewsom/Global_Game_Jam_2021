@@ -197,6 +197,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1704684333, guid: 33f9d70489aef54498927736bf7706df, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cefba7db1e067844bcd4049dbd49dc9, type: 3}
     - target: {fileID: 2104415303556438364, guid: 33f9d70489aef54498927736bf7706df,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1356,6 +1360,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc2f4b2ab802694da00daebf205f816, type: 3}
+--- !u!1 &1372389131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3594243245622329198, guid: 6dc2f4b2ab802694da00daebf205f816,
+    type: 3}
+  m_PrefabInstance: {fileID: 1372389130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1372389132
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372389131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2186430941476567602, guid: 6dc2f4b2ab802694da00daebf205f816, type: 3}
 --- !u!1001 &1789746531
 PrefabInstance:
   m_ObjectHideFlags: 0

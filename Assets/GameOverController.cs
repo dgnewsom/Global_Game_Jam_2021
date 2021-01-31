@@ -11,9 +11,8 @@ public class GameOverController : MonoBehaviour
     [SerializeField] CanvasGroup menu;
     [SerializeField] LeanTweenType easeType;
 
-    private void Awake()
+    private void OnEnable()
     {
-        StartCoroutine(GO());
     }
 
     IEnumerator GO()
@@ -25,6 +24,21 @@ public class GameOverController : MonoBehaviour
         LeanTween.alphaCanvas(retry, 1, 1).setEase(easeType);
         yield return new WaitForSeconds(1);
         LeanTween.alphaCanvas(menu, 1, 1).setEase(easeType);
+    }
+
+    public void fkit()
+    {
+        LeanTween.alphaCanvas(fadeGroup, 1, 2).setEase(easeType);
+        LeanTween.alphaCanvas(title, 1, 2).setEase(easeType);
+        LeanTween.alphaCanvas(retry, 1, 1).setEase(easeType);
+        LeanTween.alphaCanvas(menu, 1, 1).setEase(easeType);
+
+    }
+
+    public void GOPlay()
+    {
+        StartCoroutine(GO());
+        //fkit();
     }
 
     public void mainMenu()
