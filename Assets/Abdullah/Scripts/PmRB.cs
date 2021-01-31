@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PmRB : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PmRB : MonoBehaviour
     [SerializeField] Bonfire bonfireScript;
     [SerializeField] Vector3 moveDir;
     [SerializeField] bool isMoving;
+    [SerializeField] PlayerStats playerStats;
 
 
     private void Start()
@@ -19,6 +21,10 @@ public class PmRB : MonoBehaviour
         if (bonfireScript == null)
         {
             bonfireScript = FindObjectOfType<Bonfire>();
+        }
+        if (playerStats == null)
+        {
+            playerStats = GetComponent<PlayerStats>();
         }
     }
 
@@ -35,7 +41,7 @@ public class PmRB : MonoBehaviour
         if (context.performed)
         {
             isMoving = true;
-            moveDir = new Vector3(context.ReadValue<Vector2>().x,0,context.ReadValue<Vector2>().y);
+            moveDir = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
         }
         else
         {
@@ -60,9 +66,18 @@ public class PmRB : MonoBehaviour
         }
     }
 
+    public void BackToMainMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SceneManager.LoadScene(0);
+
+        }
+    }
+
     void Move()
     {
-        if (rb.velocity.magnitude<= maxSpeed)
+        if (rb.velocity.magnitude <= maxSpeed && !playerStats.IsDead)
         {
             rb.AddForce(moveDir * moveForce * rb.mass * Time.deltaTime);
         }

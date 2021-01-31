@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2317186748922463391}
   - component: {fileID: 4206416216290126187}
   - component: {fileID: 1162431074174105926}
-  - component: {fileID: 4364203498400743698}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -94,6 +93,7 @@ MonoBehaviour:
   prefabForRespawn: {fileID: 2317186748922463384}
   handler: {fileID: 8122695226287256186}
   delayBetweenSpawn: 1.5
+  autokillTime: 3
 --- !u!135 &1162431074174105926
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -116,9 +116,9 @@ SphereCollider:
   m_GameObject: {fileID: 8122695226287256180}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5271542574712536452
 PrefabInstance:

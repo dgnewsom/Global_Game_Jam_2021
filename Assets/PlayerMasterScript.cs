@@ -7,6 +7,11 @@ public class PlayerMasterScript : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
     [SerializeField] PlayerLightHandlerScript playerLightHandler;
 
+    private void Awake()
+    {
+        playerStats.playerLightHandler = playerLightHandler;
+    }
+
     private void FixedUpdate()
     {
         playerLightHandler.UpdateRange(playerStats.GetLightRadius());

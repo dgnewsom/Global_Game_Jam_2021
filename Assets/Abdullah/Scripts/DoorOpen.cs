@@ -9,8 +9,10 @@ public class DoorOpen : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
     [SerializeField] int triggerRequirement;
     [SerializeField] TextMeshProUGUI plateText;
-    [SerializeField] GameObject notification;
+    [SerializeField] GameObject notification;
     [SerializeField] LeanTweenType easeType;
+
+    [SerializeField] Sound sound_Activate;
 
     private void Start()
     {
@@ -22,12 +24,12 @@ public class DoorOpen : MonoBehaviour
         plateText.text = "x" + triggerRequirement.ToString();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other)
+    {
         if (other.gameObject.tag.Equals("Player"))
-        {
-            LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
-        }
+        {
+            LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +39,7 @@ public class DoorOpen : MonoBehaviour
             LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
             plateText.text = "x" + (Mathf.Clamp(triggerRequirement, 0, 50)).ToString();
             if (playerStats.SoulsFollowing() >= triggerRequirement)
+                sound_Activate.PlayF();
                 if (!doorOpened)
                 {
 

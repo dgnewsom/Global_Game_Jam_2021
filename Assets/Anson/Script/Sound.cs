@@ -44,9 +44,13 @@ public class Sound : MonoBehaviour
     {
         if (!source.isPlaying)
         {
-        source.Play();
+            source.Play();
 
         }
+    }
+    public void PlayF()
+    {
+            source.Play();
     }
     public void Stop()
     {
