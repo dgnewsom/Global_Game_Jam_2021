@@ -31,7 +31,7 @@ public class Bonfire : MonoBehaviour
     {
         bonfireSouls = new Stack<GameObject>();
         atBonfire = false;
-        notifText.text = "x" + requiredSouls.ToString();
+        notifText.text = "x" + currentSouls.ToString();
         Flame.SetActive(false);
         if (playerStats == null)
         {
@@ -68,7 +68,7 @@ public class Bonfire : MonoBehaviour
     public bool checkSouls()
     {
         if (requiredSouls != 0)
-            notifText.text = "x" + currentSouls.ToString()+ "/"+requiredSouls;
+            notifText.text = "x" + currentSouls.ToString();
         else
             LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
         if (currentSouls >= requiredSouls)

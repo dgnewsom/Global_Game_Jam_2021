@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float maxLightRadius;
     [SerializeField] private float lightTransitionSpeed;
     private float targetLightRadius;
-    private float currentLightRadius;
+    [SerializeField] private float currentLightRadius;
     private float lightRadiusIncrement;
 
     private Stack<GameObject> souls;        // current following souls

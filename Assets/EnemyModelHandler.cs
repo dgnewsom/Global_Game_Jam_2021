@@ -62,7 +62,7 @@ public class EnemyModelHandler : MonoBehaviour
     }
     public void PlaySound_Charge()
     {
-        print("Play charge");
+        //print("Play charge");
         Sound_Charge.Play();
     }
 

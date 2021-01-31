@@ -20,7 +20,7 @@ public class SoulAgent : MonoBehaviour
     private bool isFound = false;
     private bool isAtBonfire = false;
     private bool foundDelayFlag = false;
-    private float foundDelay = 0.2f;
+    private float foundDelay = 1f;
     private GameObject player;
     private float followDistance;
     private Vector3 initialPosition;
@@ -41,7 +41,7 @@ public class SoulAgent : MonoBehaviour
 
     internal bool IsFound()
     {
-        return isFound;
+        return (isFound || foundDelayFlag);
     }
 
     private void ResetSoul()
@@ -115,7 +115,7 @@ public class SoulAgent : MonoBehaviour
 
     public void SetFound(bool setIsFound)
     {
-        if (foundDelayFlag && setIsFound)
+        if (foundDelayFlag)
         {
             return;
         }
