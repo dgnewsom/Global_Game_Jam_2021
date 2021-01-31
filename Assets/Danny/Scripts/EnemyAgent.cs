@@ -32,6 +32,8 @@ public class EnemyAgent : MonoBehaviour
     private Vector3 attackTarget;
     private bool isDead;
     [SerializeField] float delayBetweenSpawn = 1.5f;
+    [SerializeField] float autokillTime = 3;
+    Coroutine autoKill;
 
 
     // Start is called before the first frame update
@@ -127,7 +129,7 @@ public class EnemyAgent : MonoBehaviour
         attackTarget = transform.position + moveDir;
         target = attackTarget;
         enemyAgent.SetDestination(target);
-
+        StartCoroutine(AutoKill());
     }
 
     public void SetWaypoints()
@@ -196,5 +198,14 @@ public class EnemyAgent : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenSpawn);
         GameObject reSpawn = Instantiate(prefabForRespawn, initialPosition, Quaternion.identity, this.transform.parent);
         reSpawn.GetComponent<EnemyAgent>().ResetEnemy();
+    }
+    IEnumerator AutoKill() {
+        print(this+" Starting AutoKill Count Down");
+        yield return new WaitForSeconds(autokillTime);
+        if (!isDead)
+        {
+            print(this + " Execute AutoKill");
+            Death();
+        }
     }
 }
