@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3369939315271189648}
   - component: {fileID: 3369939315271189651}
-  - component: {fileID: 3369939315271189650}
   - component: {fileID: 3369939315271189649}
   m_Layer: 0
   m_Name: Main Camera
@@ -76,14 +75,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3369939315271189650
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3369939315271189661}
-  m_Enabled: 1
 --- !u!114 &3369939315271189649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +122,7 @@ GameObject:
   - component: {fileID: 6359905725118943081}
   - component: {fileID: 6359905725118943083}
   - component: {fileID: 4056107060534581625}
+  - component: {fileID: 6442384946436143557}
   m_Layer: 10
   m_Name: PlayerMain
   m_TagString: Player
@@ -355,6 +347,14 @@ MonoBehaviour:
   baseLightRadius: 2
   maxLightRadius: 20
   lightTransitionSpeed: 5
+--- !u!81 &6442384946436143557
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359905725118942995}
+  m_Enabled: 1
 --- !u!1001 &564674254196429415
 PrefabInstance:
   m_ObjectHideFlags: 0

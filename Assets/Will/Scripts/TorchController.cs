@@ -9,6 +9,7 @@ public class TorchController : MonoBehaviour
     private int currentSouls;
     private Light torchLight;
     private Collider detectionCollider;
+    [SerializeField] Bonfire bonfire;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class TorchController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy") // can be exchanged for the layer system
+        if (other.tag == "Enemy" && bonfire.checkSouls ()) // can be exchanged for the layer system
         {
             killEnemy(other.gameObject);
         }
