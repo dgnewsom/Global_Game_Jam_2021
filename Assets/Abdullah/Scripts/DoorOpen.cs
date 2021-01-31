@@ -35,7 +35,7 @@ public class DoorOpen : MonoBehaviour
         if (other.gameObject.tag.Equals("Player"))
         {
             LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
-            plateText.text = "x" + (Mathf.Clamp(triggerRequirement - playerStats.SoulsFollowing(), 0, 50)).ToString();
+            plateText.text = "x" + (Mathf.Clamp(triggerRequirement, 0, 50)).ToString();
             if (playerStats.SoulsFollowing() >= triggerRequirement)
                 if (!doorOpened)
                 {
