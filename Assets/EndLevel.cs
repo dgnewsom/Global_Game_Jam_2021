@@ -16,7 +16,8 @@ public class EndLevel : MonoBehaviour
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             if (currentSceneIndex < SceneManager.sceneCountInBuildSettings)
             {
-                SceneManager.LoadScene(currentSceneIndex++);
+                SceneManager.LoadScene(currentSceneIndex+1);
+                print("done");
             }
             else
             {
