@@ -13,6 +13,7 @@ public class GameOverController : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(GO());
     }
 
     IEnumerator GO()
