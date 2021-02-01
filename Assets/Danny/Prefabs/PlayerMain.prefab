@@ -125,6 +125,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c76f9bda-a365-4bfe-8222-7455fef6563b
     m_ActionName: Player/Withdraw[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8c568e87-1b34-4283-8110-2458062ddbdd
+    m_ActionName: Player/ToMainMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -202,8 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3723998813999840920}
-  moveSpeed: 5
+  moveForce: 0
+  maxSpeed: 0
   bonfireScript: {fileID: 0}
+  moveDir: {x: 0, y: 0, z: 0}
+  isMoving: 0
+  playerStats: {fileID: 0}
 --- !u!136 &3723998813999840921
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -230,9 +238,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e089f21a28624548af62cf3cb18ce30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  baseLightRadius: 5
+  playerCamera: {fileID: 0}
+  cameraRange: 0
+  cameraTransitionSpeed: 0
   maxSoulsFollowing: 0
+  playerLightHandler: {fileID: 0}
+  baseLightRadius: 5
+  maxLightRadius: 0
+  lightTransitionSpeed: 0
   currentLightRadius: 0
 --- !u!1 &4983457616681465199
 GameObject:
@@ -277,7 +290,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

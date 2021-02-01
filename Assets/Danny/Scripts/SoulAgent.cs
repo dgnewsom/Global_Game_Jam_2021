@@ -76,7 +76,7 @@ public class SoulAgent : MonoBehaviour
             soulAgent.destination = player.transform.position;
             followDistance = Mathf.Clamp(player.GetComponent<PlayerStats>().GetLightRadius()*.25f,.2f,3f);
             //print(followDistance);
-            handler.SetDeadZone(followDistance);
+            handler.SetDeadZone(player.GetComponent<PlayerStats>().GetLightRadius() * .25f);
             if (distanceToPlayer < followDistance){
                 soulAgent.speed = 0f;
                 
