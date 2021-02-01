@@ -29,14 +29,16 @@ public class DoorOpen : MonoBehaviour
         if (other.gameObject.tag.Equals("Player"))
         {
             LeanTween.scale(notification, new Vector3(0, 0, 0), 0.75f).setEase(easeType);
+            print(this + " closing not");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
-        plateText.text = playerStats.SoulsFollowing().ToString() + "/" + triggerRequirement.ToString();
         if (other.gameObject.tag.Equals("Player"))
+        {
+            LeanTween.scale(notification, new Vector3(0.1f, 0.1f, 0.1f), 0.75f).setEase(easeType);
+            plateText.text = playerStats.SoulsFollowing().ToString() + "/" + triggerRequirement.ToString();
             if (playerStats.SoulsFollowing() >= triggerRequirement)
             {
                 {
@@ -67,9 +69,11 @@ public class DoorOpen : MonoBehaviour
                 }
 
             }
+        }
     }
 
-    public bool LevelComplete()
+    public bool LevelComplete()
+
     {
         return doorOpened;
     }
