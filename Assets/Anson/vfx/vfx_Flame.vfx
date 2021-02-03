@@ -551,7 +551,9 @@ VisualEffectResource:
       Unity_Clamp_float4(float4 In, float4 Min, float4 Max, out float4 Out)\n\t\t\t{\n\t\t\t   
       Out = clamp(In, Min, Max);\n\t\t\t}\n\t\t\t\n\t\t\t// Node: Power\n\t\t\tvoid
       Unity_Power_float4(float4 A, float4 B, out float4 Out)\n\t\t\t{\n\t\t\t   
-      Out = pow(A, B);\n\t\t\t}\n\t\t\t\n\t\t\tstruct SG_Input_532413f7a73b87844a950e75933222f8\n\t\t\t{\n\t\t\t   
+      Out = pow(A, B);\n\t\t\t}\n\t\t\t\n\t\t\t// Node: Clamp\n\t\t\tvoid Unity_Clamp_float3(float3
+      In, float3 Min, float3 Max, out float3 Out)\n\t\t\t{\n\t\t\t    Out = clamp(In,
+      Min, Max);\n\t\t\t}\n\t\t\t\n\t\t\tstruct SG_Input_532413f7a73b87844a950e75933222f8\n\t\t\t{\n\t\t\t   
       half4 uv0;\n\t\t\t    float3 TimeParameters;\n\t\t\t};\n\t\t\t\n\t\t\tstruct
       SG_Output_532413f7a73b87844a950e75933222f8\n\t\t\t{\n\t\t\t    float Alpha_4;\n\t\t\t};\n\t\t\t\n\t\t\tSG_Output_532413f7a73b87844a950e75933222f8
       SG_Evaluate_532413f7a73b87844a950e75933222f8(\n\t\t\t    SG_Input_532413f7a73b87844a950e75933222f8
@@ -636,8 +638,10 @@ VisualEffectResource:
       _Combine_A253B90_RGB_5;\n\t\t\t    float2 _Combine_A253B90_RG_6;\n\t\t\t   
       Unity_Combine_float(_Split_81BDB2B_R_1, _Split_81BDB2B_G_2, _Split_81BDB2B_B_3,
       0, _Combine_A253B90_RGBA_4, _Combine_A253B90_RGB_5, _Combine_A253B90_RG_6);\n\t\t\t\n\t\t\t   
+      // Node: Clamp\n\t\t\t    float3 _Clamp_53A3CFDC_Out_3;\n\t\t\t    Unity_Clamp_float3(_Combine_A253B90_RGB_5,
+      float3(0, 0, 0), float3(1, 1, 1), _Clamp_53A3CFDC_Out_3);\n\t\t\t\n\t\t\t   
       // Visual Effect Master\n\t\t\t    SG_Output_532413f7a73b87844a950e75933222f8
-      OUT;\n\t\t\t    OUT.Alpha_4 = (_Combine_A253B90_RGB_5).x;\n\t\t\t    return
+      OUT;\n\t\t\t    OUT.Alpha_4 = (_Clamp_53A3CFDC_Out_3).x;\n\t\t\t    return
       OUT;\n\t\t\t}\n\t\t\t\n\n\t\t\t\n\t\t\t#if VFX_PASSDEPTH == VFX_PASSDEPTH_SELECTION\n\t\t\tint
       _ObjectId;\n\t\t\tint _PassValue;\n\t\t\t#endif\n\t\t\t\n\t\t\t#pragma fragment
       frag\n\t\t\tfloat4 frag(ps_input i) : SV_TARGET\n\t\t\t{\n\t\t\t\tUNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);\n\t\t\t\tVFXTransformPSInputs(i);\n\t\t\t   
@@ -885,7 +889,9 @@ VisualEffectResource:
       Out = saturate(min(d.x, d.y));\n\t\t\t}\n\t\t\t\n\t\t\t// Node: One Minus\n\t\t\tvoid
       Unity_OneMinus_float(float In, out float Out)\n\t\t\t{\n\t\t\t    Out = 1 -
       In;\n\t\t\t}\n\t\t\t\n\t\t\t// Node: Multiply\n\t\t\tvoid Unity_Multiply_float(float3
-      A, float3 B, out float3 Out)\n\t\t\t{\n\t\t\t    Out = A * B;\n\t\t\t}\n\t\t\t\n\t\t\tstruct
+      A, float3 B, out float3 Out)\n\t\t\t{\n\t\t\t    Out = A * B;\n\t\t\t}\n\t\t\t\n\t\t\t//
+      Node: Clamp\n\t\t\tvoid Unity_Clamp_float3(float3 In, float3 Min, float3 Max,
+      out float3 Out)\n\t\t\t{\n\t\t\t    Out = clamp(In, Min, Max);\n\t\t\t}\n\t\t\t\n\t\t\tstruct
       SG_Input_532413f7a73b87844a950e75933222f8\n\t\t\t{\n\t\t\t    half4 uv0;\n\t\t\t   
       float3 TimeParameters;\n\t\t\t};\n\t\t\t\n\t\t\tstruct SG_Output_532413f7a73b87844a950e75933222f8\n\t\t\t{\n\t\t\t   
       float3 Color_6;\n\t\t\t    float Alpha_4;\n\t\t\t};\n\t\t\t\n\t\t\tSG_Output_532413f7a73b87844a950e75933222f8
@@ -981,9 +987,14 @@ VisualEffectResource:
       _OneMinus_50B54943_Out_1);\n\t\t\t\n\t\t\t    // Node: Multiply\n\t\t\t   
       float3 _Multiply_86D14D1B_Out_2;\n\t\t\t    Unity_Multiply_float(_Combine_A253B90_RGB_5,
       (_OneMinus_50B54943_Out_1.xxx), _Multiply_86D14D1B_Out_2);\n\t\t\t\n\t\t\t   
+      // Node: Vector 1\n\t\t\t    float _Vector1_60108EC_Out_0 = 10;\n\t\t\t\n\t\t\t   
+      // Node: Clamp\n\t\t\t    float3 _Clamp_43492A16_Out_3;\n\t\t\t    Unity_Clamp_float3(_Multiply_86D14D1B_Out_2,
+      float3(0, 0, 0), (_Vector1_60108EC_Out_0.xxx), _Clamp_43492A16_Out_3);\n\t\t\t\n\t\t\t   
+      // Node: Clamp\n\t\t\t    float3 _Clamp_53A3CFDC_Out_3;\n\t\t\t    Unity_Clamp_float3(_Combine_A253B90_RGB_5,
+      float3(0, 0, 0), float3(1, 1, 1), _Clamp_53A3CFDC_Out_3);\n\t\t\t\n\t\t\t   
       // Visual Effect Master\n\t\t\t    SG_Output_532413f7a73b87844a950e75933222f8
-      OUT;\n\t\t\t    OUT.Color_6 = _Multiply_86D14D1B_Out_2;\n\t\t\t    OUT.Alpha_4
-      = (_Combine_A253B90_RGB_5).x;\n\t\t\t    return OUT;\n\t\t\t}\n\t\t\t\n\n\t\t\n\t\t\t#pragma
+      OUT;\n\t\t\t    OUT.Color_6 = _Clamp_43492A16_Out_3;\n\t\t\t    OUT.Alpha_4
+      = (_Clamp_53A3CFDC_Out_3).x;\n\t\t\t    return OUT;\n\t\t\t}\n\t\t\t\n\n\t\t\n\t\t\t#pragma
       fragment frag\n\t\t\tps_output frag(ps_input i)\n\t\t\t{\n\t\t\t\tUNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);\n\t\t\t\tps_output
       o = (ps_output)0;\n\t\t\t\tVFXTransformPSInputs(i);\n\t\t\t\t\n\t\t\t\t\t\t\t#ifdef
       VFX_VARYING_NORMAL\n\t\t\t\t\t\t\t#if USE_DOUBLE_SIDED\n\t\t\t\t\t\t\tconst
